@@ -14,7 +14,7 @@
 
 [**`1장.협력하는 객체들의 공동체`**](https://github.com/Limdae94/TILarchive/blob/main/books/TheEssenceOfObjectOrientation/ch01.md)
 
-[**`2장.이상한 나라의 객체`**]()
+[**`2장.이상한 나라의 객체`**](https://github.com/Limdae94/TILarchive/blob/main/books/TheEssenceOfObjectOrientation/ch02.md)
 
 [**`3장. 타입과 추상화`**]()
 
