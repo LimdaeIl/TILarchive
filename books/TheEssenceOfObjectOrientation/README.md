@@ -12,19 +12,19 @@
 
 ## 책의 구성
 
-[**`1장.협력하는 객체들의 공동체`**](https://github.com/Limdae94/TILarchive/blob/main/books/TheEssenceOfObjectOrientation/ch01.md)
+[`1장.협력하는 객체들의 공동체`](https://github.com/Limdae94/TILarchive/blob/main/books/TheEssenceOfObjectOrientation/ch01.md)
 
-[**`2장.이상한 나라의 객체`**](https://github.com/Limdae94/TILarchive/blob/main/books/TheEssenceOfObjectOrientation/ch02.md)
+[`2장.이상한 나라의 객체`](https://github.com/Limdae94/TILarchive/blob/main/books/TheEssenceOfObjectOrientation/ch02.md)
 
-[**`3장. 타입과 추상화`**]()
+[`3장. 타입과 추상화`]()
 
-[**`4장. 역할,책임, 협력`**]()
+[`4장. 역할,책임, 협력`]()
 
-[**`5장. 책임과 메세지`**]()
+[`5장. 책임과 메세지`]()
 
-[**`6장. 객체 지도`**]()
+[`6장. 객체 지도`]()
 
-[**`7장. 함꼐 모으기`**]()
+[`7장. 함꼐 모으기`]()
 
 
 
