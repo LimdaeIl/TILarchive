@@ -5,8 +5,8 @@
 
 
 ## 📚책
-[`객체지향의 사실과 오해`](https://github.com/Limdae94/TILarchive/tree/main/books/TheEssenceOfObjectOrientation)
-[`스프링 프레임워크 첫걸음`]()
+- [`객체지향의 사실과 오해`](https://github.com/Limdae94/TILarchive/tree/main/books/TheEssenceOfObjectOrientation)
+- [`스프링 프레임워크 첫걸음`]()
 
 
 ## 👨‍🏫강의
