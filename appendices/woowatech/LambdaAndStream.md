@@ -4,22 +4,20 @@
 
 ### 람다식이 뭐야?
 
-<<<<<<< HEAD
+
 - 메서드를 하나의 식으로 표현한 것.
 =======
 - 메서드를 하나의 식으로 표현한 것
->>>>>>> main
+
+
 
 
 
 **두 수의 합을 반환하는 `addOperation` 메서드**
 
 ```java
-<<<<<<< HEAD
-int addOperation(int a, int b) { 
-=======
+
 int addOperation(int a, int b) {
->>>>>>> main
     return a + b;
 }
 ```
