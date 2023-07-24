@@ -16,7 +16,7 @@
 
 
 ## 책의 구성
-[`PART 1 〈입문〉 SQL 첫발 내딛기`]() </br>
+[`PART 1 〈입문〉 SQL 첫발 내딛기`](https://github.com/Limdae94/TILarchive/tree/main/books/SQL200ForBeginners/part01) </br>
 [`PART 2 〈초급〉 SQL 기초 다지기`]() </br>
 [`PART 3 〈중급〉 SQL 실력 다지기`]() </br>
 [`PART 4 〈활용〉 SQL 응용 다지기`]() </br>
