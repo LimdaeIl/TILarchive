@@ -15,7 +15,7 @@
 
 ## 책의 구성
 **PART 01 데이터베이스 시스템의 개념** </br>
-[`Chapter 01 데이터베이스 시스템`]() </br>
+[`Chapter 01 데이터베이스 시스템`](https://github.com/Limdae94/TILarchive/blob/main/books/IntroductionToDatabaseWithMySQL/part01/ch01.md) </br>
 [`Chapter 02 관계 데이터 모델`]()  </br>
 
 **PART 02 데이터베이스 프로그래머** </br>
