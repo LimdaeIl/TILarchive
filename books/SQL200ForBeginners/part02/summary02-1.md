@@ -1,4 +1,10 @@
-# PART 2 〈초급〉 SQL 기초 다지기
+# PART 2 〈초급〉 SQL 기초 다지기[16-30]
+
+>학습하게 될 함수들
+>
+>`UPPER(), LOWER(), INITCAP(), SUBSTR(), LENGTH(), INSTR(), REPLACE(), LPAD(), RPAD(), TRIM(), RTRIM(), LTRIM(), ROUND(), TRUNC(), MOD(), MONTHS_BETWEEN(), ADD_MONTHS(), NEXT_DAY(), LAST_DAY(), TO_CHAR() ` 
+
+
 
 
 
@@ -399,60 +405,144 @@ SELECT TO_DATE('2023-07-24', 'RRRR-MM-DD') + TO_YMINTERVAL('03-05') as 날짜 FR
 
 
 
+### 028 특정 날짜 뒤에 오는 요일 날짜 출력하기(NEXT_DAY)
+
+🐝2023년 07월 25일로부터 바로 돌아올 월요일의 날짜가 어떻게 되는지 출력하시오.
+
+```sql
+SELECT '2023-07-25' as 날짜, NEXT_DAY('2023-07-25', '월요일') FROM dual;
+```
+
+- `NEXT_DAY('날짜', '요일')` : 날짜를 기준으로 해당 요일의 날짜를 출력
 
 
-028 특정 날짜 뒤에 오는 요일 날짜 출력하기(NEXT_DAY)
 
-029 특정 날짜가 있는 달의 마지막 날짜 출력하기(LAST_DAY)
+🐝오늘 날짜를 출력하시오.
 
-030 문자형으로 데이터 유형 변환하기(TO_CHAR)
+```sql
+SELECT SYSDATE as 오늘_날짜 FROM dual;
+```
 
-031 날짜형으로 데이터 유형 변환하기(TO_DATE)
 
-032 암시적 형 변환 이해하기
 
-033 NULL 값 대신 다른 데이터 출력하기(NVL, NVL2)
+🐝2023년 07월 25일부터 100달 뒤에 돌아오는 화요일의 날짜를 출력하시오.
 
-034 IF문을 SQL로 구현하기 ①(DECODE)
+```sql
+SELECT ADD_MONTHS('2023-07-25', 100) FROM dual; 
+SELECT NEXT_DAY(ADD_MONTHS('2023-07-25', 100), '화요일') as "다음 날짜" FROM dual;
+```
 
-035 IF문을 SQL로 구현하기 ②(CASE)
 
-036 최대값 출력하기(MAX)
 
-037 최소값 출력하기(MIN)
+🐝2023년 07월 25일부터 100달 뒤에 돌아오는 월요일의 날짜를 출력하시오.
 
-038 평균값 출력하기(AVG)
+```sql
+SELECT NEXT_DAY(ADD_MONTHS(sysdate, 100), '월요일') as "다음 날짜" FROM dual;
+```
 
-039 토탈값 출력하기(SUM)
 
-040 건수 출력하기(COUNT)
 
-041 데이터 분석 함수로 순위 출력하기 ①(RANK)
+### 029 특정 날짜가 있는 달의 마지막 날짜 출력하기(LAST_DAY)
 
-042 데이터 분석 함수로 순위 출력하기 ②(DENSE_RANK)
+🐝2023년 07월 25일을 기준으로 해당 달의 마지막 날짜를 출력하시오.
 
-043 데이터 분석 함수로 등급 출력하기(NTILE)
+```sql
+SELECT '2023-07-25' as 날짜, LAST_DAY('2023-07-25') as "마지막 날짜" FROM dual;
+```
 
-044 데이터 분석 함수로 순위의 비율 출력하기(CUME_DIST)
+- `LAST_DAY('날짜')` : 날짜에 해당하는 달의 마지막 날짜를 출력
 
-045 데이터 분석 함수로 데이터를 가로로 출력하기(LISTAGG)
 
-046 데이터 분석 함수로 바로 전 행과 다음 행 출력하기(LAG, LEAD)
 
-047 COLUMN을 ROW로 출력하기 ①(SUM+DECODE)
+🐝오늘로부터 마지막 날짜까지 남은 일(day)수를 출력하시오.
 
-048 COLUMN을 ROW로 출력하기 ②(PIVOT)
+```sql
+SELECT LAST_DAY(SYSDATE) - SYSDATE as "남은 날짜" FROM dual;
+```
 
-049 ROW를 COLUMN으로 출력하기(UNPIVOT)
 
-050 데이터 분석 함수로 누적 데이터 출력하기(SUM OVER)
 
-051 데이터 분석 함수로 비율 출력하기(RATIO_TO_REPORT)
+🐝이름이 KING인 사원의 이름, 입사일, 입사한 달의 마지막 날짜를 출력하시오.
 
-052 데이터 분석 함수로 집계 결과 출력하기 ①(ROLLUP)
+```sql
+SELECT ename, hiredate, LAST_DAY(hiredate) FROM emp WHERE ename='KING';
+```
 
-053 데이터 분석 함수로 집계 결과 출력하기 ②(CUBE)
 
-054 데이터 분석 함수로 집계 결과 출력하기 ③(GROUPING SETS)
 
-055 데이터 분석 함수로 출력 결과 넘버링 하기(ROW_NUMBER)
+### 030 문자형으로 데이터 유형 변환하기(TO_CHAR)
+
+🐝이름이 `SCOTT` 인 사원의 이름과 입사한 요일을 출력하고 `SCOTT`의 월급에 천 단위를 구분할 수 있는 콤마(`,`)를 붙여 출력하시오.
+
+```sql
+SELECT ename, TO_CHAR(hiredate, 'DAY') as 요일, TO_CHAR(sal, '999,999') as 월급
+FROM emp
+WHERE ename='SCOTT';
+```
+
+- `TO_CHAR('데이터', '출력 형식')` : 데이터를 출력 형식에 따라 문자형으로 변환
+
+  | 기준 | 형식                 | 기준 | 형식        |
+  | ---- | -------------------- | ---- | ----------- |
+  | 연도 | `RRRR, YYYY, RR, YY` | 주   | `WW, IW, W` |
+  | 월   | `MM, MON`            | 시간 | `HH, HH24`  |
+  | 일   | `DD`                 | 분   | `MI`        |
+  | 요일 | `DAY, DY`            | 초   | `SS`        |
+
+
+
+🐝날짜를 문자로 변환해서 출력하여 날짜에서 년, 우러, 일, 요일 등을 추출해서 출력하시오.
+
+```sql
+SELECT hiredate, TO_CHAR(hiredate, 'RRRR') as 연도, TO_CHAR(hiredate, 'MM') as 달, 
+       TO_CHAR(hiredate, 'DD') as 일, TO_CHAR(hiredate, 'DAY') as 요일 
+FROM emp
+WHERE ename='KING';
+```
+
+
+
+🐝1981년도에 입사한 사원의 이름과 입사일을 출력하시오.
+
+```sql
+SELECT ename, hiredate
+FROM emp
+WHERE TO_CHAR(hiredate, 'RRRR') = '1981';
+```
+
+
+
+🐝날짜 컬럼에서 연도/월/일/시간/분/초를 추출하기 위해 EXTRACT 함수를 사용하시오.
+
+```sql
+SELECT ename as 이름, EXTRACT(year from hiredate) as 연도,
+       EXTRACT(month from hiredate) as 달, EXTRACT(day from hiredate) as 요일
+FROM emp;
+```
+
+
+
+🐝이름과 월급을 출력하는데, 월급을 출력할 때 천 단위를 표시해서 출력하시오.
+
+```sql
+SELECT ename as 이름, TO_CHAR(sal, '999,999') as 월급
+FROM emp;
+```
+
+
+
+🐝천 단위와 백만 단위를 출력하시오.
+
+```sql
+SELECT ename as 이름, TO_CHAR(sal*200, '999,999,999') as 월급
+FROM emp;
+```
+
+
+
+🐝알파벳 L을 사용하여 화폐 단위를 원화를 붙여 출력하시오.
+
+```sql
+SELECT ename as 이름, TO_CHAR(sal*200, 'L999,999,999') as 월급
+FROM emp;
+```
