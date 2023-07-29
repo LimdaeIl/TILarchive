@@ -11,7 +11,7 @@
 | `TO_NUMBER(atr)`                               | `str`을 숫자로 변환                                          |
 | `NVL(str1, str2)`                              | `str1` 안에 NULL을 `str2`로 출력                             |
 | `NVL2(str1, str2, str3)`                       | `str1` 안에 NULL이 아닌 경우 `str2`, NULL 인 경우 `str3` 출력 |
-| `DECODE(str1, 10, 300, 20, 400, 0)`            | `str1` 에 10이면 300, 20이면 400, 10과20이 아니면 0 으로 출력 |
+| `DECODE(str1, 10, 300, 20, 400, 0)`            | `str1` 에 10이면 300, 20이면 400, 10과20이 아니면 0으로 출력 |
 | `CASE WHEN str1 >= 3000 THEN 500 ELSE 0 END`   | `str1`에 3000이상이면 500, 아니면 0 으로 출력                |
 | `MAX(str1)`                                    | `str1`에 최대값 출력                                         |
 | `MIN(str2)`                                    | `str2`에 최소값 출력                                         |
