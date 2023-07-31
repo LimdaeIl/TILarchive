@@ -1,0 +1,8 @@
+# Closure
+
+
+
+
+
+# Decorator
+
