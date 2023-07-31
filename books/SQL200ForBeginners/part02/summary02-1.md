@@ -1,8 +1,34 @@
 # PART 2 〈초급〉 SQL 기초 다지기[16-30]
 
->학습하게 될 함수들
->
+### 함수 미리보기
+
 >`UPPER(), LOWER(), INITCAP(), SUBSTR(), LENGTH(), INSTR(), REPLACE(), LPAD(), RPAD(), TRIM(), RTRIM(), LTRIM(), ROUND(), TRUNC(), MOD(), MONTHS_BETWEEN(), ADD_MONTHS(), NEXT_DAY(), LAST_DAY(), TO_CHAR() ` 
+
+| 함수                                   | 설명                                                         |
+| -------------------------------------- | ------------------------------------------------------------ |
+| `UPPER(str)`                           | 대문자로 출력                                                |
+| `LOWER(str)`                           | 소문자로 출력                                                |
+| `INITCAP(str)`                         | 첫 번째 문자만 대문자로 출력하고 나머지 소문자로 출력        |
+| `SUBSTR(str, start, end)`              | `start`부터 `end`까지 문자열 출력                            |
+| `LENGTH(str)`                          | 문자열의 바이트 출력                                         |
+| `INSRT(str1, str2)`                    | `str1`에서 `str2` 인덱스를 출력                              |
+| `REPLACE(str1, str2, str3)`            | `str1` 안에 `str2`를 `str3`로 출력                           |
+| `REGEXP_REPLACE(sal, '[0-3]', '*')`    | `sal`안에 `0-3`까지를 `*`으로 출력                           |
+| `LPAD(str1, digit, str2)`              | `str1`의 자릿수를 `digit`자리로 하고 나머지 자리에 `str2` 채워서 출력 |
+| `RPAD(str1, digit, str2)`              | `str1`의 자릿수를 `digit`자리로 하고 나머지 자리에 `str2` 채워서 출력 |
+| `TRIM(str1, str2)`                     | `str1`에서 `str2` 를 잘라내고 출력                           |
+| `RTRIM(str1, str2)`                    | `str1`에서 `str2` 를 잘라내고 출력                           |
+| `LTRIM(str1, str2)`                    | `str1`에서 `str2` 를 잘라내고 출력                           |
+| `ROUND(num, digit)`                    | `num`의 `digit` 자리에서 반올림                              |
+| `TRUNC(num, digit)`                    | `num`의 `digit` 자리 이후의 숫자들 버리고 출력               |
+| `MOD(num1, num2)`                      | `num1`을 `num2`로 나눈 나머지                                |
+| `FLOOR(num1/num2)`                     | `num1`을 `num2`로 나눈 몫                                    |
+| `MONTHS_BETWEEN(최신 날짜, 예전 날짜)` | `예전 날짜`부터 `최신 날짜` 까지  달(Month)수를 반환         |
+| `TO_DATE('2019-06-01','RRRR-MM-DD')`   | `2019-06-01`을 `RRRR-MM-DD` 형식으로 출력                    |
+| `ADD_MONTHS(날짜, num)`                | `날짜`에 `num` 달을 더해서 출력                              |
+| `NEXT_DAY('2919/05/22', '월요일')`     | `2019/05/22`로부터 돌아오는 `월요일`의 날짜를 출력           |
+| `LAST_DAY(날짜)`                       | `날짜` 해당 달의 마지막 날짜를 출력                          |
+| `TO_CHAR(DATE, 'DAY')`                 | `DATE`를 요일로 출력                                         |
 
 
 
