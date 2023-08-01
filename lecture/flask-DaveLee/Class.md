@@ -525,3 +525,177 @@ else:
     print('잘못된 시간 형식입니다.')
 ```
 
+
+
+---
+
+
+
+## 상속 관계와 포함 관계 알아보기
+
+지금까지 기반 클래스를 상속하여 새로운 클래스를 만들어 보았습니다. 그런데 클래스 상속은 정확히 어디에 사용해야 할까요?
+
+
+
+### 1. 상속 관계
+
+앞에서 만든 `Student` 클래스는 `Person` 클래스를 상속받아서 만들었습니다.
+
+```python
+class Person:
+    def greeting(self):
+        print('안녕하세요.')
+ 
+class Student(Person):
+    def study(self):
+        print('공부하기')
+```
+
+여기서 학생 `Student`는 사람 `Person`이므로 같은 종류입니다. 이처럼 상속은 명확하게 같은 종류이며 동등한 관계일 때 사용합니다. 즉, "학생은 사람이다."라고 했을 때 말이 되면 동등한 관계입니다. 그래서 상속 관계를 영어로 is-a 관계라고 부릅니다(Student is a Person).
+
+
+
+### 2. 포함 관계
+
+하지만 학생 클래스가 아니라 사람 목록을 관리하는 클래스를 만든다면 어떻게 해야 할까요? 
+다음과 같이 리스트 속성에 `Person` 인스턴스를 넣어서 관리하면 됩니다.
+
+```python
+class Person:
+    def greeting(self):
+        print('안녕하세요.')
+ 
+class PersonList:
+    def __init__(self):
+        self.person_list = []    # 리스트 속성에 Person 인스턴스를 넣어서 관리
+ 
+    def append_person(self, person):    # 리스트 속성에 Person 인스턴스를 추가하는 함수
+        self.person_list.append(person)
+```
+
+여기서는 상속을 사용하지 않고 속성에 인스턴스를 넣어서 관리하므로 `PersonList`가 `Person`을 포함하고 있습니다. 이러면 사람 목록 `PersonList`와 사람 `Person`은 **동등한 관계가 아니라 포함 관계입니다.** 즉, "사람 목록은 사람을 가지고 있다."라고 말할 수 있습니다. 그래서 포함 관계를 영어로 has-a 관계라고 부릅니다(PersonList has a Person).
+
+**정리하자면 같은 종류에 동등한 관계일 때는 상속을 사용하고, 그 이외에는 속성에 인스턴스를 넣는 포함 방식을 사용하면 됩니다.**
+
+
+
+---
+
+
+
+## 기반 클래스의 속성 사용하기
+
+
+
+이번에는 기반 클래스에 들어있는 인스턴스 속성을 사용해보겠습니다. 다음과 같이 `Person` 클래스에 `hello` 속성이 있고, `Person` 클래스를 상속받아 `Student` 클래스를 만듭니다. 그다음에 `Student`로 인스턴스를 만들고 `hello` 속성에 접근해봅니다.
+
+```python
+class Person:
+    def __init__(self):
+        print('Person __init__')
+        self.hello = '안녕하세요.'
+ 
+class Student(Person):
+    def __init__(self):
+        print('Student __init__')
+        self.school = '파이썬 코딩 도장'
+ 
+james = Student()
+print(james.school)
+print(james.hello)    # 기반 클래스의 속성을 출력하려고 하면 에러가 발생함
+```
+
+```python
+Student __init__
+파이썬 코딩 도장
+Traceback (most recent call last):
+  File "C:\project\class_inheritance_attribute_error.py", line 14, in <module>
+    print(james.hello)
+AttributeError: 'Student' object has no attribute 'hello' 
+```
+
+실행을 해보면 에러가 발생합니다. 왜냐하면 기반 클래스 `Person`의 `__init__ `메서드가 호출되지 않았기 때문입니다. 
+실행 결과를 잘 보면 `'Student __init__'`만 출력되었습니다.
+
+즉, `Person`의 `__init__ `메서드가 호출되지 않으면 `self.hello = '안녕하세요.'`도 실행되지 않아서 속성이 만들어지지 않습니다.
+
+
+
+### 1. super()로 기반 클래스 초기화하기
+
+이때는 `super()`를 사용해서 기반 클래스의 `__init__` 메서드를 호출해줍니다. 
+다음과 같이 `super()` 뒤에 `.`(점)을 붙여서 메서드를 호출하는 방식입니다.
+
+- `super().메서드()`
+
+```python
+class Person:
+    def __init__(self):
+        print('Person __init__')
+        self.hello = '안녕하세요.'
+ 
+class Student(Person):
+    def __init__(self):
+        print('Student __init__')
+        super().__init__()                # super()로 기반 클래스의 __init__ 메서드 호출
+        self.school = '파이썬 코딩 도장'
+ 
+james = Student()
+print(james.school)
+print(james.hello)
+```
+
+```python
+Student __init__
+Person __init__
+파이썬 코딩 도장
+안녕하세요.
+```
+
+실행을 해보면 기반 클래스 `Person`의 속성인 `hello`가 잘 출력됩니다. `super().__init__()`와 같이 기반 클래스 `Person`의 `__init__` 메서드를 호출해주면 기반 클래스가 초기화되어서 속성이 만들어집니다. 
+실행 결과를 보면 `'Student __init__'과 'Person __init__'`이 모두 출력되었습니다.
+기반 클래스 `Person`의 속성 `hello`를 찾는 과정을 그림으로 나타내면 다음과 같은 모양이 됩니다.
+
+<img src="C:\Users\piay8\AppData\Roaming\Typora\typora-user-images\image-20230801121428161.png" alt="image-20230801121428161" style="zoom:67%;" />
+
+
+
+### 2. 기반 클래스를 초기화하지 않아도 되는 경우
+
+만약 파생 클래스에서 `__init__` 메서드를 생략한다면, 기반 클래스의 `__init__`이 자동으로 호출되므로 `super()`는 사용하지 않아도 됩니다.
+
+```python
+class Person:
+    def __init__(self):
+        print('Person __init__')
+        self.hello = '안녕하세요.'
+ 
+class Student(Person):
+    pass
+ 
+james = Student()
+print(james.hello)
+```
+
+```
+Person __init__
+안녕하세요.
+```
+
+이처럼 파생 클래스에 `__init__` 메서드가 없다면 기반 클래스의 `__init__`이 자동으로 호출되므로 기반 클래스의 속성을 사용할 수 있습니다.
+
+
+
+**참고 |** **좀 더 명확하게 super 사용하기**
+
+`super`는 다음과 같이 파생 클래스와 `self`를 넣어서 현재 클래스가 어떤 클래스인지 명확하게 표시하는 방법도 있습니다. 물론 `super()`와 기능은 같습니다.
+
+`super(파생클래스, self).메서드`
+
+```python
+class Student(Person):
+    def __init__(self):
+        print('Student __init__')
+        super(Student, self).__init__()     # super(파생클래스, self)로 기반 클래스의 메서드 호출
+        self.school = '파이썬 코딩 도장'
+```
