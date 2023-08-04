@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>문의 완료</title>
+
+    {% with mesaages = get_flashed_messages() %}
+    {% if mesaages %}
+    <ul>
+        {% for mesaage in mesaages %}
+        <li> {{ mesaage }} </li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+    {% endwith %}
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}"/>
+</head>
+<body>
+    <h2>문의 완료</h2>
+</bdoy>
+</html>
