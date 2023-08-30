@@ -3,5 +3,6 @@
   <component name="SqlDialectMappings">
     <file url="file://$PROJECT_DIR$/../../../../exercise/flaskVueMysqlConn" dialect="GenericSQL" />
     <file url="file://$PROJECT_DIR$" dialect="GenericSQL" />
+    <file url="file://$PROJECT_DIR$/../../../my-project/back-end/projects.sql" dialect="MySQL" />
   </component>
 </project>
