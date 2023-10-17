@@ -64,7 +64,9 @@ public class MemberDAO {
 }
 ```
 
-![image-20231014170607342](C:\Users\piay8\AppData\Roaming\Typora\typora-user-images\image-20231014170607342.png)
+![image](https://github.com/LimdaeIl/TILarchive/assets/131642334/9fffa41e-053a-488a-ba47-33fd80512a1d)
+
+
 
 
 
