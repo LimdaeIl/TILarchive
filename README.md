@@ -1,7 +1,7 @@
 # ☀️TILarchive 🌃
 
 학습 정리한 내용을 담은 리포지토리입니다. </br>
-매 월, 주 마다 학습한 내용에 대해 회고하고 있습니다. [`📆10월의 회고록으로 이동하기`]()
+매 월, 주 마다 학습한 내용에 대해 회고 내용이 궁금하다면 ➡️ [`📆10월의 회고록으로 이동하기`](https://github.com/LimdaeIl/TILarchive/tree/main/appendices/2023/october-2023)
 
 
 
