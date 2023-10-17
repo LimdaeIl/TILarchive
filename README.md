@@ -1,9 +1,7 @@
 # ☀️TILarchive 🌃
 
 학습 정리한 내용을 담은 리포지토리입니다. </br>
-매 월, 주 마다 학습한 내용에 대해 회고 내용이 궁금하다면 ➡️ [`📆10월의 회고록으로 이동하기`](https://github.com/LimdaeIl/TILarchive/tree/main/appendices/2023/october-2023)
-
-
+매 월, 주 마다 내가 학습한 내용에 대해 **궁금하다면** ➡️ [`📆10월의 회고록으로 이동하기`](https://github.com/LimdaeIl/TILarchive/tree/main/appendices/2023/october-2023)
 
 ## 📚책
 - [`객체지향의 사실과 오해`](https://github.com/Limdae94/TILarchive/tree/main/books/TheEssenceOfObjectOrientation)
@@ -22,12 +20,12 @@
 - [`스프링 프레임워크는 내 손에 [스프1탄]`](https://github.com/LimdaeIl/TILarchive/tree/main/lecture/spring-ParkMail/sp1)
 - [`스프링 프레임워크는 내 손에 [스프2탄]`](https://github.com/LimdaeIl/TILarchive/tree/main/lecture/spring-ParkMail/sp2)
 
-
-
-
 ## 🐝부록
 
 - [`우테코 모음`](https://github.com/Limdae94/TILarchive/tree/main/appendices/woowatech)
 - [`원티드 모음`](https://github.com/LimdaeIl/TILarchive/tree/main/appendices/wanted)
 - [`자바 코딩테스트`](https://github.com/LimdaeIl/TILarchive/tree/main/appendices/javaCodingTest)
 - [`파이썬 코딩테스트`](https://github.com/LimdaeIl/TILarchive/tree/main/appendices/pythonCodingTest)
+
+## 👣회고
+- [`2023년 10월`](https://github.com/LimdaeIl/TILarchive/tree/main/appendices/2023/october-2023)
