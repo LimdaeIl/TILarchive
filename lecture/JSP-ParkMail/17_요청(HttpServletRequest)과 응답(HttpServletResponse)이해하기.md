@@ -6,9 +6,11 @@
 
 **클라이언트에게 보이는 화면**
 
-![image-20231014151638528](C:\Users\piay8\AppData\Roaming\Typora\typora-user-images\image-20231014151638528.png)
+![image](https://github.com/LimdaeIl/TILarchive/assets/131642334/2b8aeac1-1b2e-4a93-a724-b0cdea2f0cad)
 
-![image-20231014151706362](C:\Users\piay8\AppData\Roaming\Typora\typora-user-images\image-20231014151706362.png)
+
+![image](https://github.com/LimdaeIl/TILarchive/assets/131642334/de48d0fd-0bf2-4c9b-9d70-6a5dbd2d2adb)
+
 
 클라이언트는 두 수를 입력하고 전송 버튼을 클릭합니다. 폼 태그의 속성명에 따라 'calc.do' 으로 입력값을 컨트롤러로 전송합니다. 여러 자바 서블릿 파일 안에 @subServlet 어노테이션의 매개변수가 폼 태그 속성명과 동일한 '/calc.do' 을 찾고, 입력값이 포함된 패킷(요청 정보)를 전달합니다. 패킷 안에는 크게 헤더와 바디로 구성되고 다음과 같이 전송됩니다.
 
@@ -23,7 +25,8 @@
 
 **클라이언트의 요청을 처리하는 서버**
 
-![image-20231014151800003](C:\Users\piay8\AppData\Roaming\Typora\typora-user-images\image-20231014151800003.png)
+![image](https://github.com/LimdaeIl/TILarchive/assets/131642334/8065f920-2da6-4e55-90ba-723378a4d950)
+
 
 
 
