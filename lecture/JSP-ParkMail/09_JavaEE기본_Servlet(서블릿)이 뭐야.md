@@ -4,7 +4,8 @@
 
 kr.web.controller 패키지 안에 HelloServlet.java 파일을 생성합니다.
 
-![image-20231013115650602](C:\Users\piay8\AppData\Roaming\Typora\typora-user-images\image-20231013115650602.png)
+![image](https://github.com/LimdaeIl/TILarchive/assets/131642334/167cb3a2-a86d-4d8c-b03e-65034fd7b7b3)
+
 
 
 
@@ -27,9 +28,10 @@ public class HelloServlet extends HttpServlet{
 
 2. 클래스 중괄호에서 우클릭합니다. `[Source]-[Override/Implement Methods...]` 을 클릭하여 상속받은 HttpServlet 클래스로부터 현재 사용 가능한 메서드를 확인합니다.
 
-![image-20231013120456928](C:\Users\piay8\AppData\Roaming\Typora\typora-user-images\image-20231013120456928.png)
+![image](https://github.com/LimdaeIl/TILarchive/assets/131642334/5f5f111f-8b45-4060-8d0a-2c5d18fcb5f7)
 
-![image-20231013120638788](C:\Users\piay8\AppData\Roaming\Typora\typora-user-images\image-20231013120638788.png)
+![image](https://github.com/LimdaeIl/TILarchive/assets/131642334/1d020eb4-11d4-4fd7-9efe-d9a64a8d9d97)
+
 
 
 
