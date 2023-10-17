@@ -2,43 +2,50 @@
 
 JSP를 사용하기 위해 웹 API 연결이 필요합니다. 톰캣 폴더 안에는 웹과 관련된 다양한 API가 .jar 형태로 존재합니다.  `C:\eGovFrame-4.1.0\bin\apache-tomcat-9.0.69\lib` 하위 폴더 안에 `servlet-api.jar ` 파일이 JSP를 사용하기 위해 톰캣에서 제공하는 API입니다. 
 
-![image-20231012153403412](C:\Users\piay8\AppData\Roaming\Typora\typora-user-images\image-20231012153403412.png)
+![image](https://github.com/LimdaeIl/TILarchive/assets/131642334/62ae4cd6-ae5e-402c-b6e7-3512e5ea9f97)
+
 
 `servlet-api.jar` 폴더를 복사하고 이전에 생성한 `WEB-INF/lib` 폴더 안에 저장합니다. 단, 지금까지 수동으로 웹 프로젝트를 구성했기 때문에 단순히 lib 폴더 안에 저장해서는 JSP를 사용할 수 없습니다. Java Build Path 으로 `servlet-api.jar` 를 사용할 수 있도록 라이브러리를 추가합니다.
 
  `WEB` 폴더에서 우클릭하고 `Build Path-Configure Build Path... ` 를 클릭합니다.
 
-![image-20231012153741110](C:\Users\piay8\AppData\Roaming\Typora\typora-user-images\image-20231012153741110.png)
+![image](https://github.com/LimdaeIl/TILarchive/assets/131642334/ef67f21d-13c4-4d48-af94-152e4bf9e5c2)
+
 
 
 
 `Add External JARs...` 를 클릭합니다.
 
-![image-20231012153908570](C:\Users\piay8\AppData\Roaming\Typora\typora-user-images\image-20231012153908570.png)
+![image](https://github.com/LimdaeIl/TILarchive/assets/131642334/484cbac4-3ebc-43f1-8aee-2d4991e13903)
+
 
 
 
 톰캣 폴더 안에서 `lib/servlet-api.jar` 파일을 선택하고 확인합니다.
 
-![image-20231012154030357](C:\Users\piay8\AppData\Roaming\Typora\typora-user-images\image-20231012154030357.png)
+![image](https://github.com/LimdaeIl/TILarchive/assets/131642334/5a4d3693-47c1-4887-9c2d-67591eca0426)
+
 
 
 
 `Applay and Close` 를 클릭하고 창을 닫으면 JSP 파일을 사용할 수 있습니다.
 
-![image-20231012154018158](C:\Users\piay8\AppData\Roaming\Typora\typora-user-images\image-20231012154018158.png)
+![image](https://github.com/LimdaeIl/TILarchive/assets/131642334/0a547ef3-f56e-40c8-87ee-e8ddc7392971)
+
 
 
 
 바디 태그 안에 시간을 출력할 수 있는 내용을 추가합니다. HTML 파일의 정적인 페이지가 아니라 시간에 따라서 웹 브라우저에 출력되는 시간이 동적으로 다르게 출력된다는 점을 확인할 수 있습니다.
 
-![image-20231012154621634](C:\Users\piay8\AppData\Roaming\Typora\typora-user-images\image-20231012154621634.png)
+![image](https://github.com/LimdaeIl/TILarchive/assets/131642334/90a58021-af97-43ae-89d3-73eafc041882)
+
 
 
 
 JSP 파일 실행 결과를 웹 브라우저에서 확인합니다. 새로고침할 때 마다 시간이 다르게 출력되는 것을 확인할 수 있습니다.
 
-![image-20231012154610982](C:\Users\piay8\AppData\Roaming\Typora\typora-user-images\image-20231012154610982.png)
+![image](https://github.com/LimdaeIl/TILarchive/assets/131642334/30118940-6d51-4233-9cec-3d0b2fc22825)
+
 
 
 
