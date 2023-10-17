@@ -33,19 +33,22 @@ delete from member where id='admin';
 drop table member;
 ```
 
-![image-20231014163825142](C:\Users\piay8\AppData\Roaming\Typora\typora-user-images\image-20231014163825142.png)
+![image](https://github.com/LimdaeIl/TILarchive/assets/131642334/e95de7b7-0f3e-4c6d-b981-2b977f2f5dd8)
+
 
  
 
 HTML으로 테이블 구조를 미리 생성해서 확인할 수 있는 사이트입니다. `https://www.tablesgenerator.com/` 
 
-![image-20231014163148419](C:\Users\piay8\AppData\Roaming\Typora\typora-user-images\image-20231014163148419.png)
+![image](https://github.com/LimdaeIl/TILarchive/assets/131642334/0458ec41-318b-4b30-b28d-14bf37c9c281)
+
 
 
 
 데이터베이스의 테이블의 속성명과 동일하게 input 태그 name 속성명을 작성하는 것이 좋습니다. 먼저 데이터베이스의 테이블 속성명과 동일하게 테이블 타입과 input 속성명을 작성하고 폼 태그로 감싸줍니다. 폼 태그 액션명 '/MVC01/memberInsert.do'에 해당하는 컨트롤러(서블릿)에 전송됩니다.
 
-![image-20231014164437080](C:\Users\piay8\AppData\Roaming\Typora\typora-user-images\image-20231014164437080.png)
+![image](https://github.com/LimdaeIl/TILarchive/assets/131642334/23c2fcef-ca3f-4dd1-b6d3-fc34f0921d86)
+
 
 
 
@@ -177,4 +180,5 @@ public class MemberInsertController extends HttpServlet {
 
 ```
 
-![image-20231014164651842](C:\Users\piay8\AppData\Roaming\Typora\typora-user-images\image-20231014164651842.png)
+![image](https://github.com/LimdaeIl/TILarchive/assets/131642334/bc409928-f701-4979-bcfc-e7df512a27cf)
+
