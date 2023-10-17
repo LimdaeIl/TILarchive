@@ -2,15 +2,18 @@
 
 cmd 창에서 MySQL 을 실행하고, kr.web.db 패키지 아래에 member.sql 파일을 생성합니다.
 
-![image-20231013131328919](C:\Users\piay8\AppData\Roaming\Typora\typora-user-images\image-20231013131328919.png)
+![image](https://github.com/LimdaeIl/TILarchive/assets/131642334/02e17051-9f52-4973-9139-941ad2c3d496)
+
 
 Data Source Ex... 이동합니다.커넥션 프로파일은 다음과 같이 MySQL 을 선택하고 데이터베이스는 이전에 생성한 test 를 선택합니다.
 
-![image-20231013131237912](C:\Users\piay8\AppData\Roaming\Typora\typora-user-images\image-20231013131237912.png)
+![image](https://github.com/LimdaeIl/TILarchive/assets/131642334/f09746db-712a-4edd-9b8c-59b405edede7)
+
 
 member 테이블을 생성하고 값을 추가합니다. 코드는 다음과 같이 추가하고, 코드 실행은 실행할 텍스트를 선택합니다. 그리고 우클릭해서 Execute Selected Text 를 선택해서 실행하거나 실행 단축키인 Alt + X 를 누르면 됩니다.
 
-![image-20231013131901098](C:\Users\piay8\AppData\Roaming\Typora\typora-user-images\image-20231013131901098.png)
+![image](https://github.com/LimdaeIl/TILarchive/assets/131642334/2f9cb677-e695-4c05-bee8-37df71d08df6)
+
 
 ```sql
 -- member(회원) table
