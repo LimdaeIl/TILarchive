@@ -4,11 +4,12 @@
 
 **비즈니스 로직을 처리하는 모델**
 
-![image-20231014162316406](C:\Users\piay8\AppData\Roaming\Typora\typora-user-images\image-20231014162316406.png)
+![image](https://github.com/LimdaeIl/TILarchive/assets/131642334/6cce314f-a7ba-48df-a521-1d0709e1788d)
+
 
 
 
 **컨트롤러**
 
-![image-20231014162357806](C:\Users\piay8\AppData\Roaming\Typora\typora-user-images\image-20231014162357806.png)
+![image](https://github.com/LimdaeIl/TILarchive/assets/131642334/4e73129f-4dc3-4ecc-9bf6-4d9321937a58)
 
