@@ -10,17 +10,27 @@
 
 이번 장에서는 지금까지 JSP 파일 안에 작성한 자바 코드를 `src` 폴더 안에 자바 파일로 분리하는 방법에 대해 학습합니다. 이 과정을 **JSP에서 비즈니스 로직을 분리**한다는 것을 의미합니다. 다시 `WEB` 폴더를 우클릭해서 `Build Path-Configure Build Path...` 에 들어갑니다. 
 
-![image-20231012210346944](C:\Users\piay8\AppData\Roaming\Typora\typora-user-images\image-20231012210346944.png)
+![image](https://github.com/LimdaeIl/TILarchive/assets/131642334/40b2541c-a0c6-4070-8b83-6856d4e2d4ab)
+
+
+
+
+
+
+
 
 
 
 `Source` 탭에서 `Browse...` 를 클릭하고 `WEB/bin` 으로 설정되어 있는 빌드 출력 경로를 `webapp/WEB-INF-classes` 로 변경합니다. 그 이유는 톰캣의 웹 프로젝트 컴파일을 수행하면 `webapp` 하위 폴더의 파일은 `bin` 폴더가 아닌 `classes` 폴더 안에 `class` 파일을 바탕으로 컴파일이 수행되기 때문에 `src` 폴더 안에 컴파일된 `class` 파일을 알 수 없기 때문입니다. 그래서 `classes` 폴더로 변경하면 됩니다.
 
-![image-20231012210444411](C:\Users\piay8\AppData\Roaming\Typora\typora-user-images\image-20231012210444411.png)
+![image](https://github.com/LimdaeIl/TILarchive/assets/131642334/8cac73fd-bd4d-4fcd-a087-a057e6da7c7f)
+
+
 
 성공적으로 적용이 된다면, 폴더 구조에서 classes 폴더가 사라진 것을 확인할 수 있습니다. 이제 톰캣을 다시 시작하면 성공적으로 웹 브라우저에서 결과를 볼 수 있습니다. 요약하자면, JSP 파일에서 비즈니스 로직을 임포트하고 지시어를 통해 웹 브라우저로 1부터 10까지의 합의 결과를 출력합니다. JSP 파일과 분리된 비즈니스 로직인 sum.jsp 파일과 MyUtil.java 파일은 아래에 첨부합니다.
 
-![image-20231012211408950](C:\Users\piay8\AppData\Roaming\Typora\typora-user-images\image-20231012211408950.png)
+![image](https://github.com/LimdaeIl/TILarchive/assets/131642334/a7d8a718-5640-435b-ab9d-35be0cfbd6f0)
+
 
 **sum.jsp**
 
