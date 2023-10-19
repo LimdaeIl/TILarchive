@@ -4,8 +4,8 @@
 매 월, 주 마다 내가 학습한 내용에 대해 **궁금하다면** ➡️ [`📆10월의 회고록으로 이동하기`](https://github.com/LimdaeIl/TILarchive/tree/main/appendices/2023/october-2023)
 
 ## 📚책
-- [`Must Have 성낙현의 JSP 자바 웹 프로그래밍 2판`]()
-- [`객체지향의 사실과 오해`](https://github.com/LimdaeIl/TILarchive/tree/main/books/2ndEditionofJSPMustHave)
+- [`Must Have 성낙현의 JSP 자바 웹 프로그래밍 2판`](https://github.com/LimdaeIl/TILarchive/tree/main/books/2ndEditionofJSPMustHave)
+- [`객체지향의 사실과 오해`](https://github.com/Limdae94/TILarchive/tree/main/books/TheEssenceOfObjectOrientation)
 - [`스프링 프레임워크 첫걸음`](https://github.com/Limdae94/TILarchive/tree/main/books/SpringFrameworkFirstStep)
 - [`MySQL로 배우는 데이터베이스 개론과 실습`](https://github.com/Limdae94/TILarchive/tree/main/books/IntroductionToDatabaseWithMySQL)
 - [`초보자를 위한 SQL 200제(PL/SQL)`](https://github.com/Limdae94/TILarchive/tree/main/books/SQL200ForBeginners)
