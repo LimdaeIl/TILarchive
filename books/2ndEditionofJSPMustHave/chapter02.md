@@ -6,7 +6,8 @@
 
 JSP에서 내장 객체는 **기본적인 요청과 응답, 화면 출력 등을 수행할 수 있는 객체를 의미**합니다. 예를 들어, 클라이언트가 서버로 요청을 보낸다고 가정합니다. 서버는 요청에 해당하는 응답을 클라이언트로 전송합니다. 이때 JSP의 내장 객체로 인해 요청과 응답 혹은 HTTP 헤더 등의 정보를 쉽게 다룰 수 있습니다.
 
-<img src="C:\Users\piay8\AppData\Roaming\Typora\typora-user-images\image-20231011153858878.png" alt="image-20231011153858878" style="zoom:80%;" />
+![image](https://github.com/LimdaeIl/TILarchive/assets/131642334/14f34ebd-538f-4160-9ffc-8760921c6b6c)
+
 
 내장 객체는 **JSP 페이지가 실행될 때 JSP 컨테이너가 자동으로 생성**합니다. JSP는 실행될 때 자바 파일인 서블릿으로 변환될 때 **_jspService() 메서드가 생성되고 컴파일을 수행**합니다. 생성된 _jspService() 메서드 안에는 컨테이너가 미리 선언해놓은 참조 변수에 의해 생성되는 것을 확인할 수 있습니다.
 
@@ -87,7 +88,8 @@ request 내장 객체는 JSP 에서 가장 많이 사용하는 객체입니다. 
 </html>
 ```
 
-![img](https://blog.kakaocdn.net/dn/bwRFDU/btstXz8bveR/uKAw5OAasb70Ist6AKxksK/img.png)
+![image](https://github.com/LimdaeIl/TILarchive/assets/131642334/58eb7c27-2464-4ac6-97b2-46434b34502b)
+
 
 - GET 방식은 주소표시줄에 매개변수가 노출되고, 매개변수가 쿼리스트링으로 전달됩니다.
 - POST 방식은 주소표시줄에는 경로 외에는 어떠한 것도 출력되지 않고, 쿼리스트링은 null 이 됩니다.
@@ -167,7 +169,8 @@ HTTP 프로토콜은 헤더에 부가적인 정보를 담도록 하고 있습니
 
 
 
-![img](https://blog.kakaocdn.net/dn/AYOJW/btstS7RJZmU/mRSXvfe6vAeXWXfWT8G4H1/img.png)
+![image](https://github.com/LimdaeIl/TILarchive/assets/131642334/bb5f7352-abda-4160-90f0-43cce564216e)
+
 
 
 
