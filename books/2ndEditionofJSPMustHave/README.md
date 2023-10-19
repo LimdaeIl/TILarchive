@@ -19,7 +19,7 @@
 **00 개발 환경 구축** </br>
 
 **[1단계] 빠르게 익히는 JSP 기초** </br>
-[`01장 JSP 기본`]() </br>
+[`01장 JSP 기본`](https://github.com/LimdaeIl/TILarchive/blob/main/books/2ndEditionofJSPMustHave/chapter01.md) </br>
 [`02장 내장 객체(Implicit Object)`]() </br>
 [`03장 내장 객체의 영역(Scope)`]() </br>
 [`04장 쿠키(Cookie)`]() </br>
