@@ -20,7 +20,7 @@
 
 **[1단계] 빠르게 익히는 JSP 기초** </br>
 [`01장 JSP 기본`](https://github.com/LimdaeIl/TILarchive/blob/main/books/2ndEditionofJSPMustHave/chapter01.md) </br>
-[`02장 내장 객체(Implicit Object)`]() </br>
+[`02장 내장 객체(Implicit Object)`](https://github.com/LimdaeIl/TILarchive/blob/main/books/2ndEditionofJSPMustHave/chapter02.md) </br>
 [`03장 내장 객체의 영역(Scope)`]() </br>
 [`04장 쿠키(Cookie)`]() </br>
 [`05장 데이터베이스`]() </br>
