@@ -21,28 +21,27 @@
 **[1단계] 빠르게 익히는 JSP 기초** </br>
 [`01장 JSP 기본`](https://github.com/LimdaeIl/TILarchive/blob/main/books/2ndEditionofJSPMustHave/chapter01.md) </br>
 [`02장 내장 객체(Implicit Object)`](https://github.com/LimdaeIl/TILarchive/blob/main/books/2ndEditionofJSPMustHave/chapter02.md) </br>
-[`03장 내장 객체의 영역(Scope)`]() </br>
-[`04장 쿠키(Cookie)`]() </br>
-[`05장 데이터베이스`]() </br>
-[`06장 세션(Session)`]() </br>
-[`07장 액션 태그(Action Tag)`]() </br>
-[`08장 〈Project〉 모델1 방식의 회원제 게시판 만들기 ★★☆☆`]() </br>
-[`09장 〈Project〉 게시판에 페이징 기능 넣기 ★★★☆`]() </br>
+[`03장 내장 객체의 영역(Scope)`](https://github.com/LimdaeIl/TILarchive/blob/main/books/2ndEditionofJSPMustHave/chapter03.md) </br>
+[`04장 쿠키(Cookie)`](https://github.com/LimdaeIl/TILarchive/blob/main/books/2ndEditionofJSPMustHave/chapter04.md) </br>
+[`05장 데이터베이스`](https://github.com/LimdaeIl/TILarchive/blob/main/books/2ndEditionofJSPMustHave/chapter05.md) </br>
+[`06장 세션(Session)`](https://github.com/LimdaeIl/TILarchive/blob/main/books/2ndEditionofJSPMustHave/chapter06.md) </br>
+[`07장 액션 태그(Action Tag)`](https://github.com/LimdaeIl/TILarchive/blob/main/books/2ndEditionofJSPMustHave/chapter07.md) </br>
+[`08장 〈Project〉 모델1 방식의 회원제 게시판 만들기 ★★☆☆`](https://github.com/LimdaeIl/TILarchive/blob/main/books/2ndEditionofJSPMustHave/chapter08.md) </br>
+[`09장 〈Project〉 게시판에 페이징 기능 넣기 ★★★☆`](https://github.com/LimdaeIl/TILarchive/blob/main/books/2ndEditionofJSPMustHave/chapter09.md) </br>
 
 **[2단계] 고급 기능으로 스킬 레벨업** </br>
-[`10장 표현 언어(EL : Expression Language)`]() </br>
-[`11장 JSP 표준 태그 라이브러리(JSTL)`]() </br>
-[`12장 서블릿(Servlet)`]() </br>
-[`13장 파일 업로드 및 다운로드`]() </br>
-[`14장 〈Project〉 모델2 방식(MVC 패턴)의 자료실형 게시판 만들기 ★★★★`]() </br>
-[`15장 필터(Filter)와 리스너(Listener)`]() </br>
+[`10장 표현 언어(EL : Expression Language)`](https://github.com/LimdaeIl/TILarchive/blob/main/books/2ndEditionofJSPMustHave/chapter10.md) </br>
+[`11장 JSP 표준 태그 라이브러리(JSTL)`](https://github.com/LimdaeIl/TILarchive/blob/main/books/2ndEditionofJSPMustHave/chapter11.md) </br>
+[`12장 서블릿(Servlet)`](https://github.com/LimdaeIl/TILarchive/blob/main/books/2ndEditionofJSPMustHave/chapter12.md) </br>
+[`13장 파일 업로드 및 다운로드`](https://github.com/LimdaeIl/TILarchive/blob/main/books/2ndEditionofJSPMustHave/chapter13.md) </br>
+[`14장 〈Project〉 모델2 방식(MVC 패턴)의 자료실형 게시판 만들기 ★★★★`](https://github.com/LimdaeIl/TILarchive/blob/main/books/2ndEditionofJSPMustHave/chapter14.md) </br>
+[`15장 필터(Filter)와 리스너(Listener)`](https://github.com/LimdaeIl/TILarchive/blob/main/books/2ndEditionofJSPMustHave/chapter15.md) </br>
 
 **[3단계] 프로젝트로 익히는 현업 스킬** </br>
-[`16장 〈Project〉 웹소켓으로 채팅 프로그램 만들기 ★★☆☆`]() </br>
-[`17장 〈Project〉 SMTP를 활용한 이메일 전송하기 ★☆☆☆`]()  </br>
-[`18장 〈Project〉 네이버 검색 API를 활용한 검색 결과 출력하기 ★☆☆☆`]() </br>
-[`19장 〈Project〉 배포하기 ★★☆☆`]() 
-
+[`16장 〈Project〉 웹소켓으로 채팅 프로그램 만들기 ★★☆☆`](https://github.com/LimdaeIl/TILarchive/blob/main/books/2ndEditionofJSPMustHave/chapter16.md) </br>
+[`17장 〈Project〉 SMTP를 활용한 이메일 전송하기 ★☆☆☆`](https://github.com/LimdaeIl/TILarchive/blob/main/books/2ndEditionofJSPMustHave/chapter17.md)  </br>
+[`18장 〈Project〉 네이버 검색 API를 활용한 검색 결과 출력하기 ★☆☆☆`](https://github.com/LimdaeIl/TILarchive/blob/main/books/2ndEditionofJSPMustHave/chapter18.md) </br>
+[`19장 〈Project〉 배포하기 ★★☆☆`](https://github.com/LimdaeIl/TILarchive/blob/main/books/2ndEditionofJSPMustHave/chapter19.md) 
 
 ## 독후감
 
