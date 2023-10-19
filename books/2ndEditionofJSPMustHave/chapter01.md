@@ -36,7 +36,8 @@
 
 ### 1.1.1 정적 웹 페이지와 동적 웹 페이지
 
-<img src="C:\Users\piay8\AppData\Roaming\Typora\typora-user-images\image-20231011143513485.png" alt="image-20231011143513485" style="zoom:80%;" />
+![image](https://github.com/LimdaeIl/TILarchive/assets/131642334/bf09f871-afef-4e6b-81fd-d8a41a767d11)
+
 
 **정적 웹 페이지(Static Web Page)**
 웹 서버에 '저장되어 있는 파일 그대로' 웹 프라우저에 전송해 출력하는 가장 기본적인 웹 페이지입니다. 
@@ -63,7 +64,8 @@
 
 서블릿으로 작성하면 너무 많은 코드가 필요하다는 단점이 있습니다. 그래서 기본을 HTML으로 하고 필요한 부분만 자바 코드를 삽입하는 형태인 JSP가 탄생하게 됩니다. JSP의 구동 방식은 다소 복잡해 보이지만, 알고 보면 JSP 파일을 서블릿으로 변환하여 서블릿을 실행하는 방식입니다. 한 번 서블릿으로 컴파일된 JSP 파일은 캐시되므로 실직적인 성능 저하 없이 개발 생산성과 유지보수 편의성을 모두 얻을 수 있습니다.
 
-<img src="C:\Users\piay8\AppData\Roaming\Typora\typora-user-images\image-20231011144005377.png" alt="image-20231011144005377" style="zoom:80%;" />
+![image](https://github.com/LimdaeIl/TILarchive/assets/131642334/15cf2d94-c06f-4269-90ae-50d24285189b)
+
 
 **서블릿과 JSP의 주요 차이**
 
@@ -244,7 +246,8 @@ page 지시어는 JSP 페이지에 대한 정보를 설정합니다. 예를 들�
 </html>
 ```
 
-<img src="C:\Users\piay8\AppData\Roaming\Typora\typora-user-images\image-20231011150947616.png" alt="image-20231011150947616" style="zoom:80%;" />
+![image](https://github.com/LimdaeIl/TILarchive/assets/131642334/e1e640d5-780c-49dd-a7b0-f94554f1ecbc)
+
 
 
 
