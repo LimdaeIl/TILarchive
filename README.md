@@ -5,6 +5,7 @@
 
 ## 📚책
 - [`Must Have 성낙현의 JSP 자바 웹 프로그래밍 2판`](https://github.com/LimdaeIl/TILarchive/tree/main/books/2ndEditionofJSPMustHave)
+- -[`Java의 정석 3 판`](https://github.com/LimdaeIl/TILarchive/tree/main/books/3rdEditionOfTheStandardOfJava)
 - [`객체지향의 사실과 오해`](https://github.com/Limdae94/TILarchive/tree/main/books/TheEssenceOfObjectOrientation)
 - [`스프링 프레임워크 첫걸음`](https://github.com/Limdae94/TILarchive/tree/main/books/SpringFrameworkFirstStep)
 - [`MySQL로 배우는 데이터베이스 개론과 실습`](https://github.com/Limdae94/TILarchive/tree/main/books/IntroductionToDatabaseWithMySQL)
