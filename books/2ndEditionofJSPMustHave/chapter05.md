@@ -524,7 +524,8 @@ JSP 프로그래밍 시 커넥션 풀은 직접 만들어 사용하지 않고 WA
 
 대부분의 WAS는 커넥션 풀을 비롯한 여러 자원을 JNDI 서비스로 제공합니다. **JNDI(Java Naming and Directory Interface)는 자바 소프트웨어에서 객체나 데이터의 전체 경로를 몰라도 '이름'만으로 찾아 쓸 수 있는 디렉터리 서비스**입니다. 이름과 실제 객체와의 연결은 외부의 설정 파일에서 관리하므로 다른 객체로 교체하거나 세부 설정을 변경할 때도 소스 코드를 수정하고 다시 컴파일할 필요가 없습니다.
 
-<img src="C:\Users\piay8\AppData\Roaming\Typora\typora-user-images\image-20231020151538902.png" alt="image-20231020151538902" style="zoom:67%;" />
+![image](https://github.com/LimdaeIl/TILarchive/assets/131642334/a74d6271-5112-4708-a708-d8eea92d49f8)
+
 
 JNDI 와 비슷한 예로 DNS(Domain Name Service)가 있습니다. 웹 브라우저에서 도메인을 입력하면 DNS를 통해 웹 서버의 IP 주소를 얻어와 해당 주소로 접속합니다. DNS가 도메인과 IP 주소를 연결해주는 듯이 **JNDI도 객체 이름과 실제 객체를 연결해주는 역할을 수행**합니다. 다음은 WAS의 JNDI를 통해 커넥션 풀을 사용하는 개략적인 절차입니다. 
 
@@ -607,7 +608,8 @@ server.xml에 커넥션 풀을 전역 자원으로 선언하고 context.xml에�
 
 `<Context>` 태그는 풀의 이름과 데이터 소스로 사용할 클래스명을 기술합니다. 여기서 global 속성에는 앞서 server.xml에서 등록한 커넥션 풀 전역 자원의 이름을 명시해야 합니다. 즉, 다음 그림과 같은 관계가 형성됩니다.
 
-<img src="C:\Users\piay8\AppData\Roaming\Typora\typora-user-images\image-20231020153924204.png" alt="image-20231020153924204" style="zoom:77%;" />
+![image](https://github.com/LimdaeIl/TILarchive/assets/131642334/b9bfd57f-957e-4869-bc66-0b3f564c6ffe)
+
 
 
 
@@ -615,11 +617,13 @@ server.xml에 커넥션 풀을 전역 자원으로 선언하고 context.xml에�
 
 Server 탭에서 등록된 Tomcat 10.1 을 삭제하고 새로운 서버를 등록합니다. 동일하게 Tomcat 10.1 을 선택합니다.
 
-<img src="C:\Users\piay8\AppData\Roaming\Typora\typora-user-images\image-20231020154150420.png" alt="image-20231020154150420" style="zoom:80%;" />
+![image](https://github.com/LimdaeIl/TILarchive/assets/131642334/60ccefa0-4234-4874-9755-f8e9372a3796)
+
 
 정상적으로 Tomcat 서버가 실행되는 것을 확인하고 마칩니다. 
 
-<img src="C:\Users\piay8\AppData\Roaming\Typora\typora-user-images\image-20231020202106234.png" alt="image-20231020202106234" style="zoom:80%;" />
+![image](https://github.com/LimdaeIl/TILarchive/assets/131642334/1a8dab1b-5c2d-4d6a-b0dc-486627d3071a)
+
 
 이제 커넥션 풀을 실제로 이용하기 위해 연결 클래스 코드를 다음과 같이 작성합니다.
 
