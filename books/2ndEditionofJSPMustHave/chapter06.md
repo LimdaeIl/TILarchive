@@ -90,7 +90,8 @@ SimpleDateFormat 클래스를 활용해 날짜 표시 형식을 '시:분:초' �
 
 
 
-<img src="C:\Users\piay8\AppData\Roaming\Typora\typora-user-images\image-20231020211723937.png" alt="image-20231020211723937" style="zoom:80%;" />
+![image](https://github.com/LimdaeIl/TILarchive/assets/131642334/7673143f-b85a-4708-a1be-5e802430c1a1)
+
 
 
 
@@ -100,7 +101,8 @@ SimpleDateFormat 클래스를 활용해 날짜 표시 형식을 '시:분:초' �
 
 최초 요청 시각과 마지막 요청 시각은 처음 실행하면 동일하게 출력될 것이고, 잠시 후 새로고침을 수행하면 마지막 요청 시각만 현재 시각으로 변하게 됩니다. 
 
-<img src="C:\Users\piay8\AppData\Roaming\Typora\typora-user-images\image-20231020211820930.png" alt="image-20231020211820930" style="zoom:80%;" />
+<img src="![image](https://github.com/LimdaeIl/TILarchive/assets/131642334/9348f6e6-76bb-4510-b2e3-893419189736)
+" alt="image-20231020211820930" style="zoom:80%;" />
 
 
 
@@ -185,7 +187,8 @@ form 태그와 input 태그로 작성한 로그인 폼입니다. 폼값 전송 �
 
 검사 결과 session 영역에 사용자 아이디가 저장되어 있는 경우에 실행됩니다. 로그인한 사용자의 이름과 로그아웃 버튼을 보여줍니다.
 
-<img src="C:\Users\piay8\AppData\Roaming\Typora\typora-user-images\image-20231020212534405.png" alt="image-20231020212534405" style="zoom:80%;" />
+<img src="![image](https://github.com/LimdaeIl/TILarchive/assets/131642334/8145c85c-1c68-4ea5-8f44-fbce97e9ccfd)
+" style="zoom:80%;" />
 
 
 
