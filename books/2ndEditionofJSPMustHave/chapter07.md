@@ -45,7 +45,8 @@
 
 **include 지시어의 동작 메커니즘**
 
-![image-20231021142837714](C:\Users\piay8\AppData\Roaming\Typora\typora-user-images\image-20231021142837714.png)
+![image](https://github.com/LimdaeIl/TILarchive/assets/131642334/0d6c6562-0466-4565-89a8-136f4f747b25)
+
 
 - A.jsp 를 실행할 때, include 지시어가 가장 먼저 실행되어 B.jsp 가 포함됩니다. 그 이후에 A.jsp 코드가 실행됩니다.
 
@@ -55,7 +56,8 @@ include 지시어는 **페이지를 원본 그대로 현재 페이지에 먼저 
 
 **`<jsp:include>` 액션 태그의 동작 매커니즘**
 
-<img src="C:\Users\piay8\AppData\Roaming\Typora\typora-user-images\image-20231021143536522.png" alt="image-20231021143536522" style="zoom:80%;" />
+![image](https://github.com/LimdaeIl/TILarchive/assets/131642334/0b5af513-17ac-4f79-ab11-aba1c31264ea)
+
 
 - A.jsp가 실행을 진행하다가 액션 태그를 만나면 B.jsp 이동하고 실행됩니다. B.jsp의 컴파일 결과값만 포함하고 A.jsp에게 반환되고 이어서 실행을 계속 진행합니다.
 
@@ -152,7 +154,8 @@ request.setAttribute("rAttr", "온조왕");
 
 다음 결과 그림으로 지시어와 액션 태그 동작 방식에 대해 이해할 수 있습니다. 포함된 외부 파일 두 개와 출력하는 파일을 각 특징에 따라  학습합니다.
 
-<img src="C:\Users\piay8\AppData\Roaming\Typora\typora-user-images\image-20231021150027690.png" alt="image-20231021150027690" style="zoom:80%;" />
+![image](https://github.com/LimdaeIl/TILarchive/assets/131642334/747f3f73-6947-4f4e-9d7e-9326a3f97bc2)
+
 
 
 
@@ -218,13 +221,15 @@ request.setAttribute("rAttr", "계백");
 </html>
 ```
 
-<img src="C:\Users\piay8\AppData\Roaming\Typora\typora-user-images\image-20231021150914357.png" alt="image-20231021150914357" style="zoom:67%;" />
+![image](https://github.com/LimdaeIl/TILarchive/assets/131642334/18a184bd-0aa1-487d-ac15-0f740c7eda4e)
+
 
 
 
 포워드된 페이지는 이전 페이지와는 서로 다른 페이지이므로, 페이지별로 생성되는 page 영역은 공유되지 않습니다. 포워드는 요청을 전달하므로 request 영역은 공유됩니다. 정리하자면, page 영역은 페이지별로 고유하게 생성됩니다. request 영역은 하나의 요청을 공유하는 모든 페이지에 공유됩니다. 포워드는 요청을 전달하는 매커니즘으로 포워드로 연결된 페이지들은 모두 같은 요청을 공유합니다.
 
-<img src="C:\Users\piay8\AppData\Roaming\Typora\typora-user-images\image-20231021163807379.png" alt="image-20231021163807379" style="zoom:80%;" />
+![image](https://github.com/LimdaeIl/TILarchive/assets/131642334/87574688-0221-4a1d-8f76-9c5857d1cd82)
+
 
 
 
@@ -305,7 +310,8 @@ request.setAttribute("rAttr", "계백");
 </html>
 ```
 
-<img src="C:\Users\piay8\AppData\Roaming\Typora\typora-user-images\image-20231021165458084.png" alt="image-20231021165458084" style="zoom:80%;" />
+![image](https://github.com/LimdaeIl/TILarchive/assets/131642334/1e010bd1-ab17-4e33-bc07-29260187361e)
+
 
 
 
@@ -357,11 +363,14 @@ request.setAttribute("rAttr", "계백");
 
 폼값은 항상 input 태그의 name 속성에 지정한 이름을 통해 전송됩니다. name 속성에 지정한 이름과 Person 클래스의 멤버 변수 이름이 같았기 때문에 폼값을 한 번에 저장할 수 있는 것입니다.
 
-<img src="C:\Users\piay8\AppData\Roaming\Typora\typora-user-images\image-20231021170814437.png" alt="image-20231021170814437" style="zoom:80%;" />
+![image](https://github.com/LimdaeIl/TILarchive/assets/131642334/115eebc4-bb64-4578-b7a7-238f4943d774)
 
-<img src="C:\Users\piay8\AppData\Roaming\Typora\typora-user-images\image-20231021170904490.png" alt="image-20231021170904490" style="zoom:80%;" />
 
-<img src="C:\Users\piay8\AppData\Roaming\Typora\typora-user-images\image-20231021170915868.png" alt="image-20231021170915868" style="zoom:80%;" />
+![image](https://github.com/LimdaeIl/TILarchive/assets/131642334/628117fc-5958-4f6a-afda-cafb51b4341c)
+
+
+![image](https://github.com/LimdaeIl/TILarchive/assets/131642334/af0484c0-e17a-4874-93b5-b112dfd331ea)
+
 
 
 
@@ -392,7 +401,8 @@ post 방식으로 전송된 한글이 깨졌을 때 **request 내장 객체의 s
 
 `<jsp:param>`는 **`<jsp:include>, <jsp:forward>`를 사용할 때 다른 페이지에 값을 전달해주는 액션 태그**입니다. 전달할 수 있는 값은 String뿐 입니다. 다른 타입의 객체를 전달할 때는 내장 객체의 영역을 이용해야 합니다.
 
-<img src="C:\Users\piay8\AppData\Roaming\Typora\typora-user-images\image-20231021171635185.png" alt="image-20231021171635185" style="zoom:80%;" />
+![image](https://github.com/LimdaeIl/TILarchive/assets/131642334/fc93bccc-d06f-4a92-a359-5d4b03aa4d3c)
+
 
 포워드와 포함 관계로 연결된 총 세 개의 페이지를 만들 것이며, 이 페이지들 사이에서 데이터를 공유하는 다양한 방법을 학습합니다. 자바빈즈 객체를 request 영역에 생성하는 방법으로 이전 시간에 학습한 방법입니다. `<jsp:param>` 액션 태그로 활용하는 방법에 대해 학습습을 진행합니다.
 
@@ -458,11 +468,13 @@ String pValue = "방랑시인";
 </html>
 ```
 
-<img src="C:\Users\piay8\AppData\Roaming\Typora\typora-user-images\image-20231021172151394.png" alt="image-20231021172151394" style="zoom:80%;" />
+![image](https://github.com/LimdaeIl/TILarchive/assets/131642334/1dcf4dc9-fb20-4835-b487-a1ba4692e284)
+
 
 포워드 이전의 내용은 삭제되고, 포워드된 ParamForward.jsp의 내용이 화면에 출력됩니다. reuqest 영역은 포워드된 페이지도 공유가 가능합니다.
 
-<img src="C:\Users\piay8\AppData\Roaming\Typora\typora-user-images\image-20231021172412450.png" alt="image-20231021172412450" style="zoom:80%;" />
+![image](https://github.com/LimdaeIl/TILarchive/assets/131642334/9fb6fd65-521b-4e1d-9765-81c377084a7c)
+
 
 전달 방식과 상관없이 매개변수들이 모두 request 영역에 생서되어 항상 request.getParameter() 메서드로 값을 가져오고 있습니다. rquest 영역이란 하나의 요청을 처리하는 과정에서 거쳐가는 모든 페이지에서 공유하는 공간입니다. 페이지 사이의 매개변수는 모두 request 영역에 생성됩니다. 
 
