@@ -10,7 +10,8 @@
 
 ### 8.1.1 회원제 게시판의 프로세스
 
-<img src="C:\Users\piay8\AppData\Roaming\Typora\typora-user-images\image-20231021180254415.png" alt="image-20231021180254415" style="zoom:80%;" />
+![image](https://github.com/LimdaeIl/TILarchive/assets/131642334/6011e886-0fb8-46a2-add2-ae901d4aef63)
+
 
 - 회원제 게시판
   - 첫 화면에서 게시물 목록을 보여준다.
@@ -103,7 +104,8 @@ member 테이블의 id 컬럼과 board 테이블의 id 컬럼은 외래키(forig
 
 웹 애플리케이션은 사용자의 요청을 받아 처리한 후 응답하는 구조입니다. **MVC는 모델(Model), 뷰(View), 컨트롤러(Controller)**의 약자로 소프트웨어를 개발하는 방법론입니다. **데이터 처리를 담당하는 모델**과 **출력을 담당하는 뷰**, 그리고 **이 둘을 제어하는 컨트롤러**가 각자의 역할을 분담하여 사용자의 요청을 처리한 후 결과를 웹 브라우저에 출력하게 됩니다.
 
-<img src="C:\Users\piay8\AppData\Roaming\Typora\typora-user-images\image-20231021181413503.png" alt="image-20231021181413503" style="zoom:80%;" />
+![image](https://github.com/LimdaeIl/TILarchive/assets/131642334/0e856c82-2603-4af1-add1-2adc9d462bf2)
+
 
 - **모델**: 업무 처리 로직(비즈니스 로직) 혹은 데이터베이스와 관련된 작업을 담당
 - **뷰**: JSP 페이지와 같이 사용자에게 보여지는 부분을 담당
@@ -115,7 +117,8 @@ member 테이블의 id 컬럼과 board 테이블의 id 컬럼은 외래키(forig
 
 **모델1 구조**
 
-<img src="C:\Users\piay8\AppData\Roaming\Typora\typora-user-images\image-20231021181613373.png" alt="image-20231021181613373" style="zoom:67%;" />
+![image](https://github.com/LimdaeIl/TILarchive/assets/131642334/c20ec07a-ce3a-43e1-9919-b175a416fe22)
+
 
 모델1 방식에서는 사용자의 요청을 JSP가 받아 모델을 호출합니다. 모델이 요청을 처리한 후 결과를 반환하면 JSP를 통해 응답을 하게 됩니다. 즉, JSP에 뷰와 컨트롤러가 혼재되어 있습니다. 
 
@@ -125,7 +128,8 @@ member 테이블의 id 컬럼과 board 테이블의 id 컬럼은 외래키(forig
 
 **모델2 구조**
 
-<img src="C:\Users\piay8\AppData\Roaming\Typora\typora-user-images\image-20231021181914726.png" alt="image-20231021181914726" style="zoom:80%;" />
+![image](https://github.com/LimdaeIl/TILarchive/assets/131642334/8f3a8162-2ecb-437b-bd35-b797e4d0c789)
+
 
 모델2 방식에서는 요청을 컨트롤러인 서블릿이 받습니다. 서블릿은 사용자의 요청을 분석한 후 모델을 호출합니다. 모델로부터 데이터를 받아 뷰로 전달하면 최종적으로 사용자는 요청에 대한 응답을 받을 수 있게 됩니다. 
 
@@ -137,7 +141,8 @@ member 테이블의 id 컬럼과 board 테이블의 id 컬럼은 외래키(forig
 
 페이징의 개념 없이 전체 게시물을 한꺼번에 출력하는 형태로 제작을 진행합니다.
 
-<img src="C:\Users\piay8\AppData\Roaming\Typora\typora-user-images\image-20231021182248268.png" alt="image-20231021182248268" style="zoom:80%;" />
+![image](https://github.com/LimdaeIl/TILarchive/assets/131642334/6ec1c05d-b8fa-4f00-b9db-e9ee208c7425)
+
 
 
 
