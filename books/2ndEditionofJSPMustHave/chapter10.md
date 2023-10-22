@@ -152,7 +152,8 @@ application.setAttribute("scopeValue","애플리케이션 영역");
 </html>
 ```
 
-<img src="C:\Users\piay8\AppData\Roaming\Typora\typora-user-images\image-20231021200655379.png" alt="image-20231021200655379" style="zoom:80%;" />
+![image](https://github.com/LimdaeIl/TILarchive/assets/131642334/6866be6f-7754-4b11-b7f3-9f2b23ced713)
+
 
 내장 객체의 영역 중 page 영역은 포워드되면 소멸되고 새로 만들어진다고 학습했습니다. 따라서 포워드된 이후에는 새로운 page 영역이 만들어져서 기존 page 영역에 저장해둔 값은 읽을 수 없습니다. 같은 이유로 **영역을 지정하지 않고 출력하면 request 영역의 속성값이 출력**됩니다. 따라서 **현재의 page 영역에는 scopeValue라는 속성이 없으므로, 그 다음으로 범위가 좁은 request 영역에서 속성을 읽어온 것입니다.** 
 
@@ -306,13 +307,15 @@ Person 객체, 문자열(String 객체), Integer 객체를 생성한 후 request
 
 request 영역을 통해 전달받은 객체를 출력합니다. 매개변수를 통해 전달된 값을 출력합니다. 속성명을 지정할 때 점과 대괄호를 모두 사용할 수 있습니다.
 
-<img src="C:\Users\piay8\AppData\Roaming\Typora\typora-user-images\image-20231021203213492.png" alt="image-20231021203213492" style="zoom:80%;" />
+![image](https://github.com/LimdaeIl/TILarchive/assets/131642334/8fa48652-93ea-48cd-b5ef-e9a3d3956c31)
+
 
 JSP 코드와 EL 코드를 비교를 통해 얼마나 간단하게 구현할 수 있는지 알 수 있습니다. request 영역에 저장된 Person 객체에서 JSP 코드를 통해 읽는다면 다음처럼 해야 합니다. 영역에는 모든 객체가 Object 타입으로 저장되어 있으므로 읽을 때는 반드시 형변환 후 사용해야 하고, 게터로 멤버 변수의 값을 가져옵니다. 한편 EL을 사용하면 이러한 번거러운 절차를 생략할 수 있습니다. 형변환이 필요 없고, 게터 호출 대신 멤버 변수 이름만 쓰면 바로 원하는 값을 출력할 수 있습니다. 
 
 객체를 영역에 저장해 전달하는 방식은 서블릿에서 자주 사용합니다. 서블릿 코드는 자바로 작성하고 결과 출력은 JSP에서 합니다. 이때 서블릿에서 처리한 내용을 영역에 저장한 후 JSP 파일로 포워드해 출력합니다. 
 
-<img src="C:\Users\piay8\AppData\Roaming\Typora\typora-user-images\image-20231021203420585.png" alt="image-20231021203420585" style="zoom:80%;" />
+![image](https://github.com/LimdaeIl/TILarchive/assets/131642334/206ffd98-0e60-45a9-8a50-7ff4fb40207c)
+
 
 
 
@@ -423,7 +426,8 @@ public class CookieManager {
 
 **새로고침 전**
 
-![image-20231022143127518](C:\Users\piay8\AppData\Roaming\Typora\typora-user-images\image-20231022143127518.png)
+![image](https://github.com/LimdaeIl/TILarchive/assets/131642334/9b281a43-dc95-4361-af49-cac5309954b8)
+
 
 
 
@@ -433,7 +437,8 @@ public class CookieManager {
 
 **새로고침 후**
 
-![image-20231022143205588](C:\Users\piay8\AppData\Roaming\Typora\typora-user-images\image-20231022143205588.png)
+![image](https://github.com/LimdaeIl/TILarchive/assets/131642334/0765587a-3cc3-485a-b6f7-2c059fcc9dfa)
+
 
 
 
@@ -483,7 +488,8 @@ pageContext.setAttribute("King", map);
 </html>
 ```
 
-<img src="C:\Users\piay8\AppData\Roaming\Typora\typora-user-images\image-20231022143739724.png" alt="image-20231022143739724" style="zoom:80%;" />
+![image](https://github.com/LimdaeIl/TILarchive/assets/131642334/a0dea72a-b199-413b-9a29-0964c6b17853)
+
 
 
 
@@ -597,7 +603,8 @@ pageContext.setAttribute("num4", "8");
 </html>
 ```
 
-<img src="C:\Users\piay8\AppData\Roaming\Typora\typora-user-images\image-20231022144435312.png" alt="image-20231022144435312" style="zoom:80%;" />
+![image](https://github.com/LimdaeIl/TILarchive/assets/131642334/3873c01c-545f-4984-98de-042ff7628548)
+
 
 
 
@@ -675,7 +682,8 @@ pageContext.setAttribute("sizeZero", new ArrayList<Object>());
 
 
 
-<img src="C:\Users\piay8\AppData\Roaming\Typora\typora-user-images\image-20231022144720900.png" alt="image-20231022144720900" style="zoom:80%;" />
+![image](https://github.com/LimdaeIl/TILarchive/assets/131642334/5d9621db-0f0b-4ce8-88d6-bfe7439dcaf2)
+
 
 
 
@@ -806,4 +814,5 @@ pageContext.setAttribute("myClass", myClass); // page 영역에 저장
 
 
 
-<img src="C:\Users\piay8\AppData\Roaming\Typora\typora-user-images\image-20231022145035826.png" alt="image-20231022145035826" style="zoom:80%;" />
+![image](https://github.com/LimdaeIl/TILarchive/assets/131642334/ae94d666-5bfd-4532-8f5a-5f83d2d99f11)
+
