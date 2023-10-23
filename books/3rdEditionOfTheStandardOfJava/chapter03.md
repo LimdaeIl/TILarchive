@@ -26,7 +26,8 @@
 
 **연산자 종류와 우선순위**
 
-<img src="C:\Users\piay8\AppData\Roaming\Typora\typora-user-images\image-20231023130740781.png" alt="image-20231023130740781" style="zoom:80%;" />
+![image](https://github.com/LimdaeIl/TILarchive/assets/131642334/4f7e8379-0c14-4687-a9ba-fbe854e604eb)
+
 
 연산자의 우선순위는 다음과 같습니다.
 
@@ -91,7 +92,8 @@ power = !power; // false
 
 **음수를 2진수로 표현하는 방법**
 
-<img src="C:\Users\piay8\AppData\Roaming\Typora\typora-user-images\image-20231023145601267.png" alt="image-20231023145601267" style="zoom:67%;" />
+![image](https://github.com/LimdaeIl/TILarchive/assets/131642334/8365ffa1-0135-4011-b18b-db9379c375af)
+
 
 
 
@@ -191,7 +193,8 @@ int remain = 10 % 8;
 
 **비교연산자의 연산결과**
 
-<img src="C:\Users\piay8\AppData\Roaming\Typora\typora-user-images\image-20231023165345738.png" alt="image-20231023165345738" style="zoom:80%;" />
+![image](https://github.com/LimdaeIl/TILarchive/assets/131642334/26d50aff-c2fa-492f-b1e3-6e5656570df8)
+
 
 ```java
 ‘A’ < ‘B’ →  65 < 66 → true
@@ -213,13 +216,16 @@ System.out.println(d);  // 0.10000000149011612
 - ▶ AND연산자(`&`) : 피연산자 양 쪽 모두 1이면 1이다. 
 - ▶ XOR연산자(`^`) : 피연산자가 서로 다를 때 1이다.
 
-<img src="C:\Users\piay8\AppData\Roaming\Typora\typora-user-images\image-20231023170711038.png" alt="image-20231023170711038" style="zoom:80%;" />
+![image](https://github.com/LimdaeIl/TILarchive/assets/131642334/281c37fb-6255-4896-a291-591c6e69cfcb)
+
 
 **비트연산자의 연산결과**
 
-<img src="C:\Users\piay8\AppData\Roaming\Typora\typora-user-images\image-20231023170728606.png" alt="image-20231023170728606" style="zoom:80%;" />
+![image](https://github.com/LimdaeIl/TILarchive/assets/131642334/685d973c-353c-4fe6-bb68-516c5b43ca1c)
 
-<img src="C:\Users\piay8\AppData\Roaming\Typora\typora-user-images\image-20231023170750707.png" alt="image-20231023170750707" style="zoom:80%;" />
+
+![image](https://github.com/LimdaeIl/TILarchive/assets/131642334/8c154407-13a3-4073-b328-70f0b3fad2ec)
+
 
 
 
@@ -229,7 +235,8 @@ System.out.println(d);  // 0.10000000149011612
 - ▶ OR연산자(`||`) : 피연산자 중 어느 한 쪽이 true이면 true이다.
 - ▶ AND연산자(`&&`) : 피연산자 양 쪽 모두 true이면 true이다. 
 
-<img src="C:\Users\piay8\AppData\Roaming\Typora\typora-user-images\image-20231023170913478.png" alt="image-20231023170913478" style="zoom:80%;" />
+![image](https://github.com/LimdaeIl/TILarchive/assets/131642334/4c26d40c-1115-4645-97b0-d620970755db)
+
 
 ```java
 int i = 7;
@@ -276,4 +283,4 @@ final int MAX = 3;
 MAX = 10;  // 에러
 ```
 
-<img src="C:\Users\piay8\AppData\Roaming\Typora\typora-user-images\image-20231023171231598.png" alt="image-20231023171231598" style="zoom:80%;" />
+![image](https://github.com/LimdaeIl/TILarchive/assets/131642334/092fba8f-e811-4da4-8304-96eba3d0ad94)
