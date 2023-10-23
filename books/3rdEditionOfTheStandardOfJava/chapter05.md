@@ -1,4 +1,4 @@
-![image](https://github.com/LimdaeIl/TILarchive/assets/131642334/486a3a95-9aad-4960-9697-b5abd2c3268f)# Chapter 05 배열(array)
+# Chapter 05 배열(array)
 
 
 
