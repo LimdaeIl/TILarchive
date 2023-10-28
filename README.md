@@ -19,7 +19,7 @@
 - [`가장 빠른 풀스택: 파이썬 백엔드와 웹기술 부트캠프 (flask/플라스크와 백엔드 기본) [풀스택 Part1]`](https://github.com/Limdae94/TILarchive/tree/main/lecture/flask-DaveLee)
 - [`스프링 입문 - 코드로 배우는 스프링 부트, 웹 MVC, DB 접근 기술`](https://github.com/LimdaeIl/TILarchive/tree/main/lecture/spring-KimYoungHan/IntroductionToSpring)
 - [`스프링 핵심 원리 - 기본편`](https://github.com/LimdaeIl/TILarchive/tree/main/lecture/spring-KimYoungHan/SpringCorePrinciples-Basics)
-- [`모든 개발자를 위한 HTTP 웹 기본 지식`]()
+- [`모든 개발자를 위한 HTTP 웹 기본 지식`](https://github.com/LimdaeIl/TILarchive/tree/main/lecture/spring-KimYoungHan/BasicKnowledgeOfTheHTTPWebForAllDevelopers)
 - [`[NarP Series] MVC 프레임워크는 내 손에 [나프1탄]`]()
 - [`스프링 프레임워크는 내 손에 [스프1탄]`](https://github.com/LimdaeIl/TILarchive/tree/main/lecture/spring-ParkMail/sp1)
 - [`스프링 프레임워크는 내 손에 [스프2탄]`](https://github.com/LimdaeIl/TILarchive/tree/main/lecture/spring-ParkMail/sp2)
