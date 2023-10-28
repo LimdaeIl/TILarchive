@@ -136,64 +136,71 @@ form을 통해서 GET 방식으로 HTTP 메시지에 username이 김이고 age�
 
 #### **API 설계 - POST 기반 등록**
 
-> **회원 관리 시스템
-> **1. **회원** 목록 : /members ➡️ **GET**
->
-> 2. **회원** 등록 : /members ➡️ **POST**
-> 3. **회원** 조회 : /members/{id} ➡️ **GET**
-> 4. **회원** 수정 : /members/{id} ➡️ **PATCH, PUT, POST**
-> 5. **회원** 삭제 : /members/{id} ➡️ **DELETE** 
+
+
+<br />
+
+
+
+### 회원 관리 시스템
+
+1. **회원** 목록 : /members ➡️ **GET**
+2. **회원** 등록 : /members ➡️ **POST**
+3. **회원** 조회 : /members/{id} ➡️ **GET**
+4. **회원** 수정 : /members/{id} ➡️ **PATCH, PUT, POST**
+5. **회원** 삭제 : /members/{id} ➡️ **DELETE** 
 
 - 클라이언트는 등록될 리소스의 URI를 모른다. 회원 데이터를 서버에 요청하고 서버가 알아서 회원을 식별해서 URI를 만들어준다.
-
-> **회원** 등록 : /members ➡️ **POST**
-> POST /memebers
+  - **회원** 등록 : /members ➡️ **POST**
+    POST /memebers
 
 - 클라이언트가 결정하는 게 아니라 서버가 새롭게 등록된 리소스의 URI를 생성한다. 
+  - HTTP/1.1 201 Created
+    Location : **/members/100**
 
-> HTTP/1.1 201 Created
-> Location : **/members/100**
-
-- 컬렉션(Collection)은 서버가 관리하는 리소스 디렉토리이다. 리소스의 URI를 생성하고 관리한다. 
-
-> **/members**
+- 컬렉션(Collection)은 **서버가 관리하는 리소스 디렉토리**이다. **리소스의 URI를 생성하고 관리**한다. 
+  - 컬렉션 예시: **/members**
 
 ####  
 
+<br />
+
+
+
 #### **API 설계 - PUT 기반 등록**
 
-> **파일 관리 시스템**
->
-> 1. **파일** 목록 : /files ➡️ **GET**
-> 2. **파일** 조회 : /files/{filename} ➡️ **GET**
-> 3. **파일** 등록 : /files/{filename} ➡️ **PUT**
-> 4. **파일** 삭제 : /files/{filename} ➡️ **DELETE**
-> 5. **파일** 대량 등록 : /files ➡️ **POST** 
+### **파일 관리 시스템**
+
+1. **파일** 목록 : /files ➡️ **GET**
+2. **파일** 조회 : /files/{filename} ➡️ **GET**
+3. **파일** 등록 : /files/{filename} ➡️ **PUT**
+4. **파일** 삭제 : /files/{filename} ➡️ **DELETE**
+5. **파일** 대량 등록 : /files ➡️ **POST**
 
 - 클라이언트가 리소스 URI를 알고 있어야 한다. 클라이언트가 직접 리소스의 URI를 지정해서 생성된 리소스를 관리해야 한다. 
-
-> **파일** 등록 : /file/{filename} ➡️ POST
-> PUT **/files/star.jpg**
+  - **파일** 등록 : /file/{filename} ➡️ **POST**
+    PUT **/files/star.jpg**
 
 - 스토어(Store)는 클라이언트가 관리하는 리소스 저장소이다. 
-
-> **/files**
+  - **/files**
 
  
 
+<br />
+
+
+
 #### **HTML Form 사용**
 
-> **회원 관리 시스템**
->
-> 1. **회원** 목록 : /members ➡️ **GET
->
-> **2. **회원** 등록 폼 : /members/new ➡️ **GET**
->
-> 3. **회원** 등록 : /members/new, /members ➡️ **POST**
-> 4. **회원** 조회 : /members/{id} ➡️ **GET**
-> 5. **회원** 수정 폼 : /members/{id}/edit ➡️ **GET**
-> 6. **회원** 수정 : /members/{id}/edit, /members/{id} ➡️ **POST**
-> 7. **회원** 삭제 : /members/{id}/delete ➡️ **POST**
+### **회원 관리 시스템**
+
+1. **회원** 목록 : /members ➡️ **GET**
+2. **회원** 등록 폼 : /members/new ➡️ **GET**
+3. **회원** 등록 : /members/new, /members ➡️ **POST**
+4. **회원** 조회 : /members/{id} ➡️ **GET**
+5. **회원** 수정 폼 : /members/{id}/edit ➡️ **GET**
+6. **회원** 수정 : /members/{id}/edit, /members/{id} ➡️ **POST**
+7. **회원** 삭제 : /members/{id}/delete ➡️ **POST**
 
 -  순수한 HTML과 HTML Form은 GET, POST만 지원하기 때문에 제약이 있다.
 - 제약을 해결하기 위해 동사로 된 리소스 경로를 사용을 하는데 이걸 컨트롤 URI이라 한다. HTTP 메서드로 해결하기 애매한 경우에 컨트롤 URI를 사용한다.
