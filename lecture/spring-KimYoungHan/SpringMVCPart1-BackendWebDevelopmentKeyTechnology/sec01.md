@@ -41,7 +41,7 @@
 
  
 
-**웹 시스템 구성 방법 2- WS, WAS, DB**\
+**웹 시스템 구성 방법 2- WS, WAS, DB**
 
 - 정적 리소스 웹 서버가 처리
 - 웹 서버는 동적인 처리가 필요하면 WAS에 요청
@@ -70,8 +70,6 @@
 ![img](https://blog.kakaocdn.net/dn/bFQ7C2/btq77uNeokw/4TN3InEYxL2MEo6e2HVKZK/img.png)
 
 
-
- 
 
 **서버에서 처리해야하는 업무**
 
@@ -130,7 +128,7 @@ public class HelloServlet extends HttpServlet {
 -  고객의 모든 요청은 동일한 인스턴스에 접근
 -  공유 변수 사용 주의
 -  서블릿 컨테이너 종료 시 함께 종료
-- JSP도 서블릿응로 변환 되어서 사용
+- JSP도 서블릿으로 변환 되어서 사용
 -  동시에 요청을 위한 멀티 쓰레드 처리 지원
 
 
@@ -147,9 +145,7 @@ public class HelloServlet extends HttpServlet {
 -  자바 메인 메서드를 실행하면 main 쓰레드가 실행
 
 ```java
-public static void main(String[] args) {
-    
-}
+public static void main(String[] args) { }
 ```
 
 - 쓰레드가 없다면 애플리케이션 실행이 불가능
