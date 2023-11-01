@@ -266,7 +266,7 @@ Are person1 and person3 equal? false
 
 
 
-4.1  identityHashCode(Object x) 예제
+### 4.2 identityHashCode(Object x) 예제
 
 `identityHashCode(Object x)`는 **자바에서 객체의 식별 해시 코드(Identity Hash Code)를 반환하는 메서드**입니다. 이 메서드는 객체의 내용이 아닌 **객체의 실제 메모리 주소(참조)에 기반하여 해시 코드를 생성**합니다. 이것은 두 객체가 서로 다른 인스턴스일지라도, 같은 메모리 주소를 참조하는 경우에는 동일한 식별 해시 코드를 반환합니다.
 
@@ -458,7 +458,7 @@ String str3 = "Hello, World"; // 같은 문자열 리터럴을 참조
 
 
 
-#### 5.1.1 문자열 풀(String Pool)
+**문자열 풀(String Pool)**
 
 
 문자열 풀(String Pool) 또는 공유 문자열 상수 풀(Constant Pool)은 자바에서 문자열 리터럴(String Literal)을 저장하는 특별한 메모리 영역을 가리킵니다. 이 영역은 문자열 리터럴을 공유하여 메모리 사용을 최적화하고 문자열 상수의 중복을 피하는 데 사용됩니다.
@@ -487,7 +487,6 @@ public class Main {
         System.out.println("str1 == str3 :  " + (str1 == str3)); // false
         System.out.println("str1.equals(str2) = " + str1.equals(str2)); // true
         System.out.println("str1.equals(str3) = " + str1.equals(str3)); // true
-
     }
 }
 ```
@@ -500,7 +499,6 @@ str1.equals(str2) = true
 str1.equals(str3) = true
 
 종료 코드 0(으)로 완료된 프로세스
-
 ```
 
 이 코드에서 `str1`과 `str2`는 동일한 문자열 리터럴을 참조하므로 `==` 연산자를 사용하여 참조 비교를 하면 true가 됩니다. 이는 두 변수가 동일한 문자열 객체를 가리키고 있기 때문입니다. 이런 공유 문자열 상수 풀의 동작을 통해 문자열의 중복을 피하고 메모리를 효율적으로 사용할 수 있습니다.
@@ -517,8 +515,9 @@ str1.equals(str3) = true
 
 1. **문자열 연결(Concatenation):**
 
-   - 문자열 연결은 문자열을 결합하는 작업을 의미합니다. 이를 수행할 때 `+` 연산자를 사용하거나 `concat()` 메서드를 호출할 수 있습니다.
-
+   - 문자열 연결은 문자열을 결합하는 작업을 의미합니다. 
+     이를 수행할 때 `+` 연산자를 사용하거나 `concat()` 메서드를 호출할 수 있습니다.
+   
    ```java
    public class Main {
        public static void main(String[] args) {
@@ -529,20 +528,21 @@ str1.equals(str3) = true
        }
    }
    ```
-
+   
    ```java
    C:\Users\piay8\.jdks\corretto-11.0.21\bin\java.exe "-javaagent:C:\Program Files\JetBrains\IntelliJ IDEA 2023.2.2\lib\idea_rt.jar=52545:C:\Program Files\JetBrains\IntelliJ IDEA 2023.2.2\bin" -Dfile.encoding=UTF-8 -classpath C:\github\TILarchive\Weakness\untitled\out\production\untitled Main
    result = Hello, World
    
    종료 코드 0(으)로 완료된 프로세스
    ```
-
+   
    - 문자열 연결을 수행하면 새로운 문자열 객체가 생성되며, `result`는 `"Hello, World"`를 참조합니다.
 
 
 
 2. **문자열 수정 및 변환:**
-   - `String` 클래스는 문자열을 직접 수정하는 메서드가 제한적입니다. 문자열은 불변하므로 수정할 수 없습니다. 대신, 문자열을 수정하려면 새로운 문자열을 생성해야 합니다.
+   - `String` 클래스는 문자열을 직접 수정하는 메서드가 제한적입니다. 
+     문자열은 불변하므로 수정할 수 없습니다. 대신, 문자열을 수정하려면 새로운 문자열을 생성해야 합니다.
 
 ```java
 public class Main {
@@ -564,7 +564,8 @@ modified = Hello, World
 
 
 3. **`StringBuilder` 및 `StringBuffer` 사용:**
-   - 문자열을 효율적으로 수정하려면 `StringBuilder` 또는 `StringBuffer` 클래스를 사용해야 합니다. 이 두 클래스는 가변 문자열을 다루기 위해 설계되었으며, 문자열 수정 시에 메모리를 효율적으로 관리할 수 있습니다.
+   - 문자열을 효율적으로 수정하려면 `StringBuilder` 또는 `StringBuffer` 클래스를 사용해야 합니다. 
+     이 두 클래스는 가변 문자열을 다루기 위해 설계되었으며, 문자열 수정 시에 메모리를 효율적으로 관리할 수 있습니다.
 
 ```java
 public class Main {
@@ -583,8 +584,6 @@ result = Hello, World
 
 종료 코드 0(으)로 완료된 프로세스
 ```
-
-
 
 
 
@@ -612,7 +611,8 @@ formattedString = Name: Alice, Age: 30
 
 
 5. **문자열 분할(Splitting) 및 추출(Substring):**
-   - 문자열에서 부분 문자열을 추출하거나 특정 패턴을 기반으로 문자열을 분할하는 메서드를 사용할 수 있습니다. 예를 들어, `split()`, `substring()`, `substring(int beginIndex, int endIndex)` 메서드를 사용합니다.
+   - 문자열에서 부분 문자열을 추출하거나 특정 패턴을 기반으로 문자열을 분할하는 메서드를 사용할 수 있습니다. 
+     예를 들어, `split()`, `substring()`, `substring(int beginIndex, int endIndex)` 메서드를 사용합니다.
 
 ```java
 public class Main {
@@ -644,263 +644,118 @@ subString = is a
 
 ### 5.3 문자열 메서드
 
-자바의 `String` 클래스는 다양한 문자열 메서드를 제공하여 문자열을 조작하고 분석하는 데 도움을 줍니다. 아래에서 몇 가지 주요한 문자열 메서드와 그 역할에 대한 설명을 제공하겠습니다:
+자바의 `String` 클래스는 다양한 문자열 메서드를 제공하여 문자열을 조작하고 분석하는 데 도움을 줍니다. 문자열 메서드는 별도로 정리를 따로 할 예정입니다.
 
-1. **`length()` 메서드:**
 
-   - `length()` 메서드는 문자열의 길이(문자 수)를 반환합니다.
-   - 예를 들어, `"Hello, World"` 문자열의 길이는 **12**입니다.
 
-   ```java
-   String str = "Hello, World";
-   int length = str.length(); // length는 12를 반환
-   ```
+### 5.4 문자열 리터럴과 문자열 객체의 차이 
 
-2. **`charAt(int index)` 메서드:**
+문자열 리터럴과 문자열 객체는 Java에서 문자열을 표현하는 두 가지 주요 방법입니다. 이들의 주요 차이점은 다음과 같습니다:
 
-   - `charAt(int index)` 메서드는 문자열에서 지정된 인덱스에 있는 문자를 반환합니다.
-   - 문자열의 인덱스는 **0**부터 시작합니다.
+1. **리터럴 vs. 객체**:
+   - **문자열 리터럴**: 문자열 리터럴은 큰 따옴표(" ")로 둘러싸인 문자열 값입니다. 예를 들어, `"Hello, World!"`는 문자열 리터럴입니다. 문자열 리터럴은 컴파일 시에 이미 생성되며, Java의 문자열 상수 풀(constant pool)에 저장됩니다. 따라서 동일한 문자열 리터럴이 여러 번 사용되면 실제로는 하나의 인스턴스만 생성됩니다.
+   - **문자열 객체**: 문자열 객체는 `String` 클래스의 인스턴스를 생성하여 문자열을 저장하는 방법입니다. `new String("Hello, World!")`와 같이 생성할 수 있으며, 매번 새로운 인스턴스가 생성됩니다. 문자열 객체를 생성할 때마다 새로운 메모리 공간을 할당받습니다.
+2. **불변성(Immutability)**:
+   - 문자열 리터럴은 불변(immutable)합니다. 한 번 생성되면 그 값을 변경할 수 없습니다. 따라서 문자열 리터럴을 수정하려면 새로운 문자열을 생성해야 합니다.
+   - 문자열 객체 역시 불변성을 가지지만, `String` 클래스의 일부 메서드를 사용하여 새로운 문자열을 생성하면서 기존 문자열을 수정하는 것처럼 보일 수 있습니다. 그러나 실제로는 수정된 문자열을 나타내는 새로운 `String` 객체가 생성됩니다.
+3. **성능**:
+   - 문자열 리터럴은 미리 생성되어 있으므로 동일한 문자열 리터럴을 여러 번 사용해도 추가 메모리를 소비하지 않습니다.
+   - 문자열 객체는 메모리를 더 많이 사용할 수 있으며, 문자열을 수정할 때마다 새로운 객체가 생성되므로 성능 상의 오버헤드가 발생할 수 있습니다.
 
-   ```java
-   String str = "Hello, World";
-   char character = str.charAt(7); // character는 'W'를 반환
-   ```
+일반적으로 문자열 리터럴을 사용하는 것이 더 효율적이며 권장됩니다. 문자열 객체를 명시적으로 생성해야 하는 경우가 아니라면 문자열 리터럴을 사용하는 것이 좋습니다.
 
-3. **`substring(int beginIndex)` 및 `substring(int beginIndex, int endIndex)` 메서드:**
 
-   - `substring(int beginIndex)` 메서드는 문자열에서 특정 인덱스부터 끝까지의 부분 문자열을 반환합니다.
-   - `substring(int beginIndex, int endIndex)` 메서드는 문자열에서 특정 범위의 부분 문자열을 반환합니다.
 
-   ```java
-   String str = "Hello, World";
-   String sub1 = str.substring(7); // sub1은 "World"를 반환
-   String sub2 = str.substring(0, 5); // sub2은 "Hello"를 반환
-   ```
+### 5.5 문자열 불변성
 
-4. **`equals(Object obj)` 메서드:**
+문자열의 불변성(Immutability)은 **문자열 데이터가 생성된 후에 그 값을 변경할 수 없음을 의미**합니다. Java에서 문자열은 불변 객체(Immutable Object)로 구현되어 있습니다. 이것은 문자열 값이 한 번 설정되면 해당 값을 변경할 수 없다는 것을 의미합니다. 이러한 문자열 불변성에 대한 몇 가지 중요한 특성과 이점이 있습니다:
 
-   - `equals(Object obj)` 메서드는 주어진 객체(일반적으로 다른 문자열)와 현재 문자열을 비교하여 두 문자열이 동일한 내용인 경우 `true`를 반환합니다.
+1. **보안**: 불변한 문자열은 보안상의 이점을 제공합니다. 문자열 값이 변경할 수 없으므로 암호화된 문자열 또는 해시 함수의 결과 값을 안전하게 저장하고 전송할 수 있습니다.
+2. **스레드 안정성**: 불변한 문자열은 여러 스레드에서 안전하게 공유할 수 있습니다. 수정할 필요가 없으므로 동기화에 대한 걱정이 없어집니다.
+3. **캐싱**: 문자열 리터럴은 Java의 문자열 상수 풀(constant pool)에 저장되며, 동일한 문자열 리터럴을 여러 변수가 참조해도 메모리를 공유합니다. 이로 인해 성능 향상이 가능하며, 메모리를 절약할 수 있습니다.
+4. **코드 안정성**: 불변한 문자열은 코드의 안정성을 높이고 오류를 줄일 수 있습니다. 예를 들어, 메소드에서 문자열을 다루는 경우 원래 문자열을 수정하지 않으므로 예기치 않은 부작용이 발생하지 않습니다.
+5. **문자열 연결 및 조합**: 불변 문자열은 문자열 연결이나 조합 시에 새로운 문자열을 생성하며 원래 문자열을 변경하지 않습니다. 이로 인해 문자열 조작에 대한 안정성이 높아집니다.
+6. **문자열 풀링**: 문자열 리터럴은 자동으로 문자열 풀에 저장되어 동일한 문자열 값이 많은 변수에서 공유됩니다. 이로써 중복 문자열을 효과적으로 관리할 수 있습니다.
 
-   ```java
-   String str1 = "Hello";
-   String str2 = "World";
-   boolean areEqual = str1.equals(str2); // areEqual은 false를 반환
-   ```
+불변한 문자열의 주요 단점은 문자열을 수정할 때마다 새로운 문자열 객체가 생성된다는 점입니다. 따라서 문자열 수정이 빈번하게 발생하는 경우 성능 문제가 발생할 수 있습니다. 이런 경우 `StringBuilder` 또는 `StringBuffer`와 같은 가변 문자열을 사용하는 것이 더 효율적일 수 있습니다.
 
-5. **`startsWith(String prefix)` 및 `endsWith(String suffix)` 메서드:**
 
-   - `startsWith(String prefix)` 메서드는 문자열이 지정된 접두사(prefix)로 시작하는지 여부를 확인합니다.
-   - `endsWith(String suffix)` 메서드는 문자열이 지정된 접미사(suffix)로 끝나는지 여부를 확인합니다.
 
-   ```java
-   String str = "Hello, World";
-   boolean startsWithHello = str.startsWith("Hello"); // true
-   boolean endsWithWorld = str.endsWith("World"); // true
-   ```
+### 5.6 문자열 풀과 문자열 상수
 
-6. **`indexOf(String str)` 메서드:**
 
-   - `indexOf(String str)` 메서드는 문자열 내에서 지정된 문자열 `str`의 첫 번째 등장 위치(인덱스)를 반환합니다. 문자열이 없으면 -1을 반환합니다.
+문자열 풀(String Pool)과 문자열 상수(String Constant)는 **Java에서 문자열 리터럴을 관리하고 최적화하는 메커니즘**입니다. 
+이 두 개념은 밀접하게 관련되어 있으며, 아래에서 각각을 설명하겠습니다:
 
-   ```java
-   String sentence = "This is a sample sentence.";
-   int index = sentence.indexOf("sample"); // index는 10을 반환
-   ```
+1. **문자열 풀(String Pool):**
+   - 문자열 풀은 **메모리 내의 문자열 리터럴들을 관리하는 풀(또는 테이블)**입니다. 
+     문자열 풀은 JVM(Java Virtual Machine) 내에 위치하며, 각 문자열 리터럴은 단 하나의 인스턴스만 존재하도록 유지됩니다.
+   - 문자열 리터럴은 코드에서 큰 따옴표(" ")로 감싸진 문자열 값입니다. 예를 들어, `"Hello, World!"`는 문자열 리터럴입니다. 이러한 리터럴은 컴파일 시에 문자열 풀에 저장되며, 코드에서 동일한 리터럴을 여러 번 사용해도 하나의 인스턴스만 생성됩니다.
+   - 문자열 풀은 중복 문자열을 효과적으로 관리하여 메모리 공간을 절약하고 문자열 리터럴을 재사용할 수 있게 합니다.
+2. **문자열 상수(String Constant):**
+   - 문자열 상수는 Java에서 사용자 정의한 문자열 값이 아닌, **문자열 리터럴을 가리키는 상수(상수 변수)를 의미**합니다. 
+     `final` 키워드를 사용하여 선언된 변수들 중에서 문자열 리터럴을 가리키는 변수가 문자열 상수입니다.
+   - 문자열 상수를 사용하면 컴파일러가 최적화를 수행할 수 있으며, 문자열 리터럴을 변경하지 않도록 보장합니다.
+      따라서 문자열 상수를 사용하면 불변성을 보다 확실히 유지할 수 있습니다.
 
-7. **`replace(CharSequence target, CharSequence replacement)` 메서드:**
+예를 들어, 다음 코드에서 `MESSAGE`는 문자열 상수입니다:
 
-   - `replace(CharSequence target, CharSequence replacement)` 메서드는 문자열에서 지정된 대상(target) 문자열을 대체 문자열(replacement)로 교체한 새로운 문자열을 반환합니다.
+```java
+final String MESSAGE = "Hello, World!";
+```
 
-   ```java
-   String str = "Hello, World";
-   String replacedStr = str.replace("Hello", "Hi");
-   // replacedStr는 "Hi, World"를 반환
-   ```
+이러한 문자열 상수를 사용하면 코드의 가독성을 높이고, 문자열 리터럴을 변경하지 못하도록 보호합니다.
 
-8. **`toUpperCase()` 및 `toLowerCase()` 메서드:**
+중요한 참고 사항은 문자열 풀은 문자열 리터럴에 대한 관리를 수행하지만, 동적으로 생성된 문자열 객체에는 적용되지 않습니다. 즉, `new String("Hello, World!")`와 같이 동적으로 문자열 객체를 생성하는 경우 문자열 풀에 저장되지 않고, 매번 새로운 인스턴스가 생성됩니다.
 
-   - `toUpperCase()` 메서드는 문자열의 모든 문자를 대문자로 변환한 새로운 문자열을 반환합니다.
-   - `toLowerCase()` 메서드는 문자열의 모든 문자를 소문자로 변환한 새로운 문자열을 반환합니다.
 
-   ```java
-   String str = "Hello, World";
-   String upperCaseStr = str.toUpperCase(); // "HELLO, WORLD"
-   String lowerCaseStr = str.toLowerCase(); // "hello, world"
-   ```
 
-9. **`trim()` 메서드:**
 
-   - `trim()` 메서드는 문자열의 앞뒤 공백을 제거한 새로운 문자열을 반환합니다.
 
-   ```java
-   String str = "  Hello, World  ";
-   String trimmedStr = str.trim(); // "Hello, World"
-   ```
+### 5.7 StringBuilder와 StringBuffer
 
-10. **`isEmpty()` 메서드:**
+`StringBuilder`와 `StringBuffer` 클래스는 **Java에서 문자열을 동적으로 조작할 수 있는 클래스**입니다. 이 두 클래스는 문자열을 변경 가능한 가변(mutable) 형태로 다룰 수 있도록 도와줍니다. 주요 차이점은 **스레드 동기화(thread-safety)**와 관련이 있습니다.
 
-    - `isEmpty()` 메서드는 문자열이 비어 있는지 여부를 확인하며, 비어 있으면 `true`를, 그렇지 않으면 `false`를 반환합니다.
+1. **StringBuilder**
+   - `StringBuilder`는 Java 5부터 도입된 클래스로, 문자열을 가변하게 조작할 때 주로 사용됩니다.
+   - `StringBuilder` 클래스는 스레드 동기화를 고려하지 않기 때문에 단일 스레드 환경에서 사용하기에 효율적입니다.
+   - `StringBuilder`를 사용하면 문자열을 효율적으로 연결하거나 수정할 수 있습니다. 
+     예를 들어, 문자열을 반복해서 연결할 때 사용하기 좋습니다.
 
-    ```java
-    String str1 = "";
-    String str2 = "Hello";
-    boolean isEmpty1 = str1.isEmpty(); // true
-    boolean isEmpty2 = str2.isEmpty(); // false
-    ```
+```java
+StringBuilder sb = new StringBuilder();
+sb.append("Hello");
+sb.append(", ");
+sb.append("World!");
+String result = sb.toString(); // "Hello, World!"
+```
 
-11. **`contains(CharSequence sequence)` 메서드:**
 
-    - `contains(CharSequence sequence)` 메서드는 문자열이 특정 문자열(sequence)을 포함하는지 여부를 확인하며, 포함하면 `true`를, 그렇지 않으면 `false`를 반환합니다.
 
-    ```java
-    String sentence = "This is a sample sentence.";
-    boolean containsSample = sentence.contains("sample"); // true
-    boolean containsExample = sentence.contains("example"); // false
-    ```
+2. **StringBuffer**
+   - `StringBuffer`는 오래된 Java 버전부터 제공되는 클래스로, 문자열 조작 시 스레드 동기화를 지원합니다.
+   - `StringBuffer`는 다중 스레드 환경에서 안전하게 사용할 수 있도록 설계되었기 때문에 스레드 간의 동시 접근에 대한 문제를 방지합니다.
+   - `StringBuffer`는 `StringBuilder`와 유사한 기능을 제공하지만, 스레드 동기화 오버헤드로 인해 단일 스레드 환경에서는 `StringBuilder`보다 느릴 수 있습니다.
 
-12. **`matches(String regex)` 메서드:**
+```java
+StringBuffer sb = new StringBuffer();
+sb.append("Hello");
+sb.append(", ");
+sb.append("World!");
+String result = sb.toString(); // "Hello, World!"
+```
 
-    - `matches(String regex)` 메서드는 문자열이 정규 표현식(regex)과 일치하는지 여부를 확인하며, 일치하면 `true`를, 그렇지 않으면 `false`를 반환합니다.
+일반적으로 단일 스레드 환경에서는 `StringBuilder`를 사용하는 것이 더 효율적이며, 다중 스레드 환경에서 스레드 안전성을 고려해야 할 때 `StringBuffer`를 사용할 수 있습니다. 현재 대부분의 상황에서 `StringBuilder`가 선호되는 클래스이며, 스레드 동기화가 필요한 특별한 경우에만 `StringBuffer`를 사용하는 것이 권장됩니다. 지금 간단하게 살펴보고, 핵심 생성자와 메서드에 대해서는 별도로 문자열 메서드와 함께 정리합니다.
 
-    ```java
-    String email = "user@example.com";
-    boolean isEmailValid = email.matches("[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,4}"); // true
-    ```
 
-13. **`split(String regex)` 메서드:**
 
-    - `split(String regex)` 메서드는 문자열을 지정된 정규 표현식(regex)을 기준으로 분할하고 분할된 부분 문자열을 배열로 반환합니다.
+### 5.8 문자열 비교
 
-    ```java
-    String sentence = "This is a sample sentence.";
-    String[] words = sentence.split(" "); // 공백을 기준으로 문자열 분할
-    ```
+5.1 문자열의 생성과 초기화의 문자열 풀의 내용과 동일합니다.
 
-14. **`startsWith(String prefix)` 및 `endsWith(String suffix)` 메서드:**
 
-    - `startsWith(String prefix)` 메서드는 문자열이 지정된 접두사(prefix)로 시작하는지 여부를 확인합니다.
-    - `endsWith(String suffix)` 메서드는 문자열이 지정된 접미사(suffix)로 끝나는지 여부를 확인합니다.
 
-    ```java
-    String str = "Hello, World";
-    boolean startsWithHello = str.startsWith("Hello"); // true
-    boolean endsWithWorld = str.endsWith("World"); // true
-    ```
+### 5.9 정규 표현식
 
-15. **`replace(CharSequence target, CharSequence replacement)` 메서드:**
-
-    - `replace(CharSequence target, CharSequence replacement)` 메서드는 문자열에서 지정된 대상(target) 문자열을 대체 문자열(replacement)로 교체한 새로운 문자열을 반환합니다.
-
-    ```java
-    String str = "Hello, World";
-    String replacedStr = str.replace("Hello", "Hi");
-    // replacedStr는 "Hi, World"를 반환
-    ```
-
-16. **`equalsIgnoreCase(String another)` 메서드:**
-
-    - `equalsIgnoreCase(String another)` 메서드는 대/소문자를 무시하고 두 문자열을 비교합니다.
-       즉, 두 문자열이 내용적으로 동일한 경우 `true`를 반환합니다.
-
-    ```java
-    String str1 = "Hello";
-    String str2 = "hello";
-    boolean areEqual = str1.equalsIgnoreCase(str2); // true
-    ```
-
-17. **`concat(String str)` 메서드:**
-
-    - `concat(String str)` 메서드는 문자열 끝에 다른 문자열을 추가하고 새로운 문자열을 반환합니다.
-       `+` 연산자와 유사한 기능을 수행합니다.
-
-    ```java
-    String str1 = "Hello, ";
-    String str2 = "World";
-    String result = str1.concat(str2); // 문자열 연결과 유사한 역할을 수행
-    ```
-
-18. **`compareTo(String another)` 메서드:**
-
-    - `compareTo(String another)` 메서드는 두 문자열을 사전 순서대로 비교합니다. 
-      두 문자열이 같으면 0 반환을, 사전적으로 첫 번째 문자열이 더 앞서면 음수를, 두 번째 문자열이 더 앞서면 양수를 반환합니다.
-
-    ```java
-    String str1 = "apple";
-    String str2 = "banana";
-    int comparison = str1.compareTo(str2); // 음수를 반환
-    ```
-
-19. **`format(String format, Object... args)` 메서드:**
-
-    - `format(String format, Object... args)` 메서드는 문자열을 형식화하여 생성합니다. 
-      지정된 형식(format)과 매개변수(args)를 사용하여 문자열을 만듭니다.
-
-    ```java
-    String name = "Alice";
-    int age = 30;
-    String formattedString = String.format("Name: %s, Age: %d", name, age);
-    ```
-
-20. **`regionMatches(int toffset, String other, int ooffset, int len)` 메서드:**
-
-    - `regionMatches(int toffset, String other, int ooffset, int len)` 메서드는 두 문자열 간의 부분 문자열을 비교합니다. 시작 인덱스와 길이를 지정하여 비교합니다.
-
-    ```java
-    String str1 = "Hello, World";
-    String str2 = "World, Hello";
-    boolean isMatch = str1.regionMatches(7, str2, 0, 5); // true
-    ```
-
-21. **`toCharArray()` 메서드:**
-
-    - `toCharArray()` 메서드는 문자열을 문자 배열로 변환하여 반환합니다. 문자열 내의 각 문자를 배열 요소로 저장합니다.
-
-    ```java
-    String str = "Hello";
-    char[] charArray = str.toCharArray(); // charArray는 ['H', 'e', 'l', 'l', 'o']를 반환
-    ```
-
-22. **`getBytes()` 및 `getBytes(String charsetName)` 메서드:**
-
-    - `getBytes()` 메서드는 문자열을 바이트 배열로 변환하여 반환합니다. 문자열을 기본 문자 인코딩을 사용하여 바이트로 변환합니다.
-    - `getBytes(String charsetName)` 메서드는 문자열을 지정된 문자 인코딩을 사용하여 바이트로 변환합니다.
-
-    ```java
-    String str = "Hello, World";
-    byte[] bytes = str.getBytes(); // 기본 문자 인코딩을 사용한 바이트 배열
-    byte[] utf8Bytes = str.getBytes("UTF-8"); // UTF-8 인코딩을 사용한 바이트 배열
-    ```
-
-23. **`intern()` 메서드:**
-
-    - `intern()` 메서드는 문자열을 문자열 풀(String Pool)에 추가하고, 해당 문자열을 공유 문자열 상수 풀(Constant Pool)에서 찾거나 새로 추가된 문자열을 반환합니다.
-
-    ```java
-    String str1 = "Hello";
-    String str2 = new String("Hello").intern(); // 문자열을 문자열 풀에 추가
-    boolean areEqual = (str1 == str2); // true (두 문자열은 같은 문자열 리터럴을 참조)
-    ```
-
-24. **`subSequence(int beginIndex, int endIndex)` 메서드:**
-
-    - `subSequence(int beginIndex, int endIndex)` 메서드는 문자열에서 지정된 범위의 문자열을 추출한 CharSequence를 반환합니다.
-
-    ```java
-    String str = "Hello, World";
-    CharSequence subSeq = str.subSequence(7, 12); // subSeq는 "World"를 포함한 CharSequence
-    ```
-
-25. **`contentEquals(CharSequence cs)` 메서드:**
-
-    - `contentEquals(CharSequence cs)` 메서드는 현재 문자열과 주어진 CharSequence(cs)를 비교하여 내용이 동일한 경우 `true`를 반환합니다.
-
-    ```java
-    String str = "Hello, World";
-    CharSequence cs = new StringBuilder("Hello, World");
-    boolean isContentEqual = str.contentEquals(cs); // true
-    ```
-
-이러한 문자열 메서드를 활용하면 문자열 조작과 분석 작업을 다양하게 수행할 수 있으며, 자바 프로그래밍에서 문자열을 효과적으로 다룰 수 있습니다.
-
-
+정규 표현식은 생략하고 넘어갑니다.
 
