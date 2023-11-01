@@ -856,3 +856,184 @@ public class Main {
 
 
 
+
+
+## 래퍼(wrapper) 클래스
+
+
+래퍼(wrapper) 클래스는 Java에서 **기본 데이터 타입(원시 데이터 타입)을 객체로 래핑하는 클래스**입니다. 기본 데이터 타입은 `int`, `double`, `boolean`, 등과 같은 데이터를 나타내는 데이터 타입을 의미하며, 래퍼 클래스는 이러한 기본 데이터 타입을 객체로 다룰 수 있도록 도와줍니다. 래퍼 클래스는 다음과 같은 목적으로 사용됩니다.
+
+1. **객체와 기본 데이터 타입 간의 상호 변환:** 
+   래퍼 클래스를 사용하면 기본 데이터 타입을 객체로 변환하거나 객체를 기본 데이터 타입으로 변환할 수 있습니다.
+2. **제네릭 프로그래밍:** 
+   제네릭 클래스나 메서드에서는 객체를 요구합니다. 
+   따라서 기본 데이터 타입을 사용하는 경우 래퍼 클래스를 활용하여 객체로 변환합니다.
+3. **컬렉션 및 자료 구조:** 
+   Java의 컬렉션 프레임워크에서는 객체만 저장할 수 있습니다.
+   따라서 기본 데이터 타입을 래퍼 클래스로 감싸서 컬렉션에 저장할 수 있습니다.
+
+Java에서 주요한 래퍼 클래스와 해당 기본 데이터 타입은 다음과 같습니다:
+
+- `Integer` (int)
+- `Double` (double)
+- `Character` (char)
+- `Boolean` (boolean)
+- `Byte` (byte)
+- `Short` (short)
+- `Long` (long)
+- `Float` (float)
+
+예를 들어, `Integer` 클래스는 `int` 데이터를 래핑하는 클래스이며, 다음은 래퍼 클래스와 기본 데이터 타입 간의 변환 예제입니다:
+
+```java
+javaCopy code// 래퍼 클래스를 사용하여 int를 Integer 객체로 변환
+int primitiveInt = 42;
+Integer wrappedInt = Integer.valueOf(primitiveInt);
+
+// Integer 객체를 int로 변환
+int unwrappedInt = wrappedInt.intValue();
+```
+
+래퍼 클래스는 데이터 타입 변환, 제네릭 프로그래밍, 컬렉션 등과 같은 상황에서 유용하게 활용됩니다. Java의 자동 박싱(boxing) 및 언박싱(unboxing) 기능을 통해 기본 데이터 타입과 래퍼 클래스 간의 변환을 간편하게 수행할 수 있습니다.
+
+
+
+| 기본형  | 래퍼클래스 | 생성자                                                 | 활용 예                                                      |
+| ------- | ---------- | ------------------------------------------------------ | ------------------------------------------------------------ |
+| boolean | Boolean    | Boolean(boolean value) Boolean(String s)               | Boolean b = new Boolean(true); <br />Boolean b2 = new Boolean("true"); |
+| char    | Character  | Character(char value)                                  | Character c = new Character('a');                            |
+| byte    | Byte       | Byte(byte value) Byte(String s)                        | Byte b = new Byte(10); <br />Byte b2 = new Byte("10");       |
+| short   | Short      | Short(short value) Short(String s)                     | Short s = new Short(10); <br />Short s2 = new Short("10");   |
+| int     | Integer    | Integer(int value) Integer(String s)                   | Integer i = new Integer(100); <br />Integer i2 = new Integer("100"); |
+| long    | Long       | Long(long value) Long(String s)                        | Long l = new Long(100); <br />Long l2 = new Long("100");     |
+| float   | Float      | Float(double value) Float(float value) Float(String s) | Float f = new Float(1.0); <br />Float f2 = new Float(1.0f); <br />Float f3 = new Float("1.0f"); |
+| double  | Double     | Double(double value) Double(String s)                  | Double d = new Double(1.0); <br />Double d2 = new Double("1.0"); |
+
+래퍼 클래스들은 모두 equals()가 오버라이딩되어 있어서 주소값이 아닌 객체가 가지고 있는 값을 비교합니다. 오토박싱이 된다고 해도 Integer객체에 비교연산자를 사용할 수 없습니다. 대신 compareTo()를 제공합니다. 또한 toString()도 오버라이딩 되어 있어서 객체가 가지고 있는 값을 문자열로 변환하여 반환합니다. 이 외에도 MAX_VALUE, MIN_VALUE, SIZE, BYTES, TYPE 등의 static상수를 공통적으로 가지고 있습니다. (BYTES는 JDK1.8부터 추가되었습니다.)
+
+
+
+## Number클래스
+
+Number클래스는 추상클래스로, 내부적으로 숫자를 멤버변수로 갖는 래퍼 클래스들의 조상입니다. 
+기본형 중에서 숫자와 관련된 래퍼클래스들은 모두 Number클래스의 자손입니다.
+
+- BigInteger는 long으로도 다룰 수 없는 큰 범위의 정수를 처리합니다.
+- BigDecimal은 double로도 다룰 수 없는 큰 범위의 부동소수점수를 처리합니다.
+
+<img src="https://blog.kakaocdn.net/dn/qLQfO/btrfWMmxF5K/fiRISaJUPrcZh0V8UiHka0/img.png" alt="img" style="zoom:80%;" />
+
+```java
+//Number클래스
+//객체가 가지고 있는 값을 숫자와 관련된 기본형으로 변환하여 반환하는 메서드 정의
+public abstract class Number implements java.io.Serializable
+{
+	public abstract int intValue();
+    public abstract long longValue();
+    public abstract float floatValue();
+    public abstract double doubleValue();
+    
+    public byte byteValue()
+    {
+    	return (byte)intValue();
+    }
+    
+    public short shortValue()
+    {
+    	return (short)intValue();
+    }
+}
+```
+
+ 
+
+**문자열을 숫자로 변환하기**
+
+```java
+int i = new Integer("100").intValue();		//floatValue(), longValue(), ...
+int i2 = Integer.parseInt("100");	// 기본 타입 - 주로 사용하는 방법
+Integer i3 = Integer.valueOf("100"); // 래퍼클래스 타입
+```
+
+- **타입.parse타입(String s)** : 반환값 기본형(primitive type)
+- **타입.valueOf()** : 반환값 래퍼클래스 타입
+
+JDK1.5부터 도입된 오토박싱(autoboxing) 기능 때문에 반환값이 기본형일 때와 래퍼클래스일 때의 차이가 없어졌습니다. 
+단, 성능은 valueOf()가 조금 더 느립니다.
+
+| 문자열 -> 기본형                                             | 문자열 -> 래퍼 클래스                                        |
+| ------------------------------------------------------------ | ------------------------------------------------------------ |
+| byte b = Byte.parseByte("100"); <br />short s = Short.parseShort("100"); <br />int i = Integer.parseInt("100"); <br />long l = Long.parseLong("100"); <br />float f = Float.parseFloat("3.14"); <br />double d = Double.parseDouble("3.14"); | Byte b = Byte.valueOf("100"); <br />Short s = Short.valueOf("100"); <br />Integer i = Integer.valueOf("100"); <br />Long l = Long.valueOf("100"); <br />Float f = Float.valueOf("3.14"); <br />Double d = Double.valueOf("3.14"); |
+
+ 
+
+문자열이 10진수가 아닌 다른 진법(radix)의 숫자일 때도 변환이 가능하도록 제공하는 메서드입니다.
+
+```java
+static int parseInt(String s, int radix)	//문자열 s를 radix진법으로 인식
+static Integer valueOf(String s, int radix)
+```
+
+ 
+
+문자열 "100"을 기준으로,
+
+- 2진법의 숫자라면 10진수로 4
+- 8진법의 숫자라면 10진수로 64
+- 16진법의 숫자라면 10진수로 256
+
+```java
+int i4 = Integer.parseInt("100", 2);	//100(2) -> 4
+int i5 = Integer.parseInt("100", 8);	//100(8) -> 64
+int i6 = Integer.parseInt("100", 16);	//100(16) -> 256
+int i7 = Integer.parseInt("FF", 16);	//FF(16) -> 255
+/*
+	16진법에서는 A~F의 문자도 허용하므로
+    Integer.parseInt("FF", 16)이 허용되지만
+    진법을 생략할 경우 10진수로 간주하기 때문에
+    Integer.parseInt("FF")는 NumberFormatException이 발생한다.
+*/
+int i8 = Integer.parseInt("FF");	//NumberFormatException발생
+```
+
+ 
+
+## 오토박싱 & 언박싱(autoboxing & unboxing)
+
+JDK1.5 이전에는 기본형과 참조형 간의 연산이 불가능했기 때문에, 래퍼클래스로 기본형을 객체로 만들어 연산해야 했습니다.
+
+```java
+int i = 5;
+Integer iObj = new Integer(7);
+
+int sum = i + iObj;		//에러. 기본형과 참조형 간의 덧셈 불가(JDK1.5 이전)
+```
+
+그러나 이제는 기본형과 참조형 간의 덧셈이 가능한데, 컴파일러가 자동으로 변환하는 코드를 넣어주기 때문입니다. 컴파일러가 Integer객체를 int타입의 값으로 변환해주는 intValue()를 추가해줍니다.
+
+| 컴파일 전의 코드                                             | 컴파일 후의 코드                                             |
+| ------------------------------------------------------------ | ------------------------------------------------------------ |
+| int i = 5; Integer iObj = new Integer(7);  int sum = i + iObj; | int i = 5; Integer iObj = new Integer(7);  int sum = i + iObj.intValue(); |
+
+내부적으로 객체 배열을 가지고 있는 Vector클래스나 ArrayList클래스에 기본형 값을 저장해야 할 때나 형변환이 필요할 때도 컴파일러가 자동적으로 코드를 추가해줍니다.
+
+- **오토박싱 (autoboxing)** : 기본형 값을 래퍼 클래스의 객체로 자동 변환해주는 것
+- **언박싱 (unboxing)** : 래퍼 클래스를 기본형 값으로 자동 변환해주는 것
+
+```java
+ArrayList<Integer> list = new ArrayList<Integer>();
+list.add(10);		//오토박싱 10 -> new Integer(10)
+
+int value = list.get(0);	//언박싱. new Integer(10) -> 10
+```
+
+| 컴파일 전의 코드                                             | 컴파일 후의 코드                                             |
+| ------------------------------------------------------------ | ------------------------------------------------------------ |
+| Integer intg = (Integer)i; <br />Object obj = (Object)i; <br />Long lng = 100L; | Integer intg = Integer.valueOf(i);<br /> Object obj = (Object)Integer.valueOf(i); <br />Long lng = new Long(100L); |
+
+ 
+
+
+
+
+
