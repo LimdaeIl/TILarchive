@@ -172,7 +172,7 @@ System.out.println(name);
 
 쓰레드를 생성한 후 start()를 호출해야만 쓰레드가 실행된다.
 
-```
+```java
 t1.start();	//쓰레드 t1을 실행시킨다.
 t2.start();	//쓰레드 t2을 실행시킨다.
 ```
@@ -181,7 +181,7 @@ start()가 호출되면 일단 실행대기 상태에 있다가 자신의 차례
 
 한 번 실행이 종료된 쓰레드는 다시 실행할 수 없다. 즉, 하나의 쓰레드에 대해 start()가 한 번만 호출될 수 있다. 만일 쓰레드의 작업을 한 번 더 수행해야 한다면 새로운 쓰레드를 생성한 다음에 start()를 호출해야 한다. 만일 하나의 쓰레드에 대해 start()를 두 번 이상 호출하면 실행시에 IllegalThreadStateException이 발생한다.
 
-```
+```java
 ThreadEx1_1 t1 = new ThreadEx1_1();
 t1.start();
 t1.start();		//예외 발생
