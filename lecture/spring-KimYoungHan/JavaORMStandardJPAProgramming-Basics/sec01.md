@@ -1,141 +1,205 @@
-# 섹션0. JPA 소개
+# JPA란?
 
-### 목표 : 객체와 테이블 설계 매핑 
+- Java Persistence API의 준말
+- 자바 진영의 `ORM` 기술 표준
 
-- 객체와 테이블을 제대로 설계하고 매핑하는 방법
-- 기본 키와 외래 키 매핑
-- 1:N, N:1, 1:1, N:M 매핑
-- 실무 노하우 + 성능 고려
-- JPA 내부 동작 방식 이해하기
-- JPA가 언제, 어떤 SQL을 만들어 실행하는지 이해
+## ORM이란?
 
-JPA를 배우기 앞서 어떤 문제점이 있었고 어떤게, 어떻게 개선되었는지 확인합니다.
+- Object-relational mapping(객체 관계 매핑)
+  - 객체는 객체대로 설계
+  - 관계형 데이터베이스는 관계형 데이터베이스대로 설계
+  - ORM 프레임워크가 중간에서 매핑
+- 대중적인 언어에는 대부분 ORM 기술이 존재
 
+## JPA는 애플리케이션과 JDBC 사이에서 동작
 
+[![image](https://user-images.githubusercontent.com/44339530/138620604-2ae16835-b9df-491d-a7f9-273c2148800c.png)](https://user-images.githubusercontent.com/44339530/138620604-2ae16835-b9df-491d-a7f9-273c2148800c.png)
 
-<br />
+개발자가 직접 JDBC API를 사용하는게 아닌 JPA를 사용하면 JPA가 JDBC API를 호출하는 방식이다.
 
+### JPA 동작 - 저장
 
+[![image](https://user-images.githubusercontent.com/44339530/138620764-390d81a1-b03e-4536-83e1-da5bc7fe30e4.png)](https://user-images.githubusercontent.com/44339530/138620764-390d81a1-b03e-4536-83e1-da5bc7fe30e4.png)
 
-### 패러다임의 불일치
+예를 들어, MemberDAO에서 Member 객체를 저장하고 싶다하면 JPA가 Entity를 분석 후 Insert SQL 생성 후 JDBC API를 사용하여 DB에 저장한다. `중요한 건 쿼리를 개발자가 만드는게 아니고 JPA가 만들어준다는 것이다. 더 중요한건 이 패러다임의 불일치를 해결해준다는 것이다.`
 
-JPA는 객체 지향 프로그래밍 언어인 자바와 관계형 데이터베이스 사이에서 발생하는 패러다임의 불일치를 극복하기 위한 기술로 사용됩니다. 이러한 불일치는 다음과 같은 주요 차이점으로 나타납니다:
+### JPA 동작 - 조회
 
-1. **데이터 모델의 차이**
+[![image](https://user-images.githubusercontent.com/44339530/138620926-e964e683-f123-41ad-9e9d-d0f48c316563.png)](https://user-images.githubusercontent.com/44339530/138620926-e964e683-f123-41ad-9e9d-d0f48c316563.png)
 
-   - 객체 지향 언어: **클래스**와 **객체**를 사용하여 데이터 모델을 정의
+JPA가 Member객체를 보고 적절한 조회 쿼리를 만들고 JDBC API를 통해 DB로부터 결과를 받아온다. 그래서 ReesultSet 매핑을 수행 후 Entity Object를 반환한다. `여기서도 중요한건 패러다임의 문제를 해결해준다는 것이다.`
 
-   - 관계형 데이터베이스:  **테이블**, **열**, **행**으로 데이터를 저장
+# JPA 소개
 
-     이러한 모델 간의 차이로 인해 데이터를 변환하고 매핑해야 합니다.
+## JPA의 역사
 
-2. **상속 및 다형성**
+[![image](https://user-images.githubusercontent.com/44339530/138621103-393fc475-ad64-4af1-84ee-16b6fb9e40c7.png)](https://user-images.githubusercontent.com/44339530/138621103-393fc475-ad64-4af1-84ee-16b6fb9e40c7.png)
 
-   - 객체 지향 언어: **상속** 및 **다형성**과 같은 개념을 지원
-   - 관계형 데이터베이스: 이러한 개념을 직접 지원하지 않음
+과거에도 ORM이 있었다. EJB라는게 있었고 엔티비 빈이라는게 자바표준으로 하고 있었다. 문제는 너무 기술이 아마추어적이여서 성능도 너무 안나오고 인터페이스도 엄청 많이 구현해야 했었다. 그래서 거의 잘 안쓰였다.
 
-3. **식별자 관리**
-
-   - 관계형 데이터베이스: **고유한 키(primary key)를 사용하여 레코드를 식별**
-   - 객체 지향 언어: **레퍼런스를 사용하여 객체를 식별**
-
-JPA는 이러한 불일치를 극복하기 위해 객체와 관계형 데이터베이스 간의 매핑을 지원합니다. JPA를 사용하면 개발자는 객체 지향 모델을 사용하여 데이터베이스와 상호 작용할 수 있습니다. JPA는 객체와 데이터베이스 간의 매핑을 처리하고 객체 지향 프로그래밍 언어의 특징을 유지하면서 데이터베이스 조작을 간단하게 만듭니다.
-
-이를 통해 개발자는 객체를 통해 데이터를 조작할 수 있으며, JPA는 이를 내부적으로 관계형 데이터베이스와 일치시키는 작업을 수행합니다. 따라서 JPA는 객체와 관계형 데이터베이스 간의 패러다임 불일치를 극복하는데 도움을 줍니다.
-
- 
-
-### ORM(Object-Relational Mapping)
-
-ORM은 "Object-Relational Mapping"의 약어로, **객체와 관계형 데이터베이스 간의 데이터 변환과 상호 작용을 단순화하는 프로그래밍 기술 또는 패턴**을 가리킵니다. ORM은 객체 지향 프로그래밍 언어와 관계형 데이터베이스 간의 패러다임 불일치를 해결하기 위해 개발되었습니다.
-
-주요 요소와 개념:
-
-1. **객체 지향 모델**
-   - 객체 지향 프로그래밍 언어(예: Java, C#, Python)에서는 데이터와 데이터 처리 로직을 클래스와 객체로 표현
-   - 객체는 상속, 다형성, 캡슐화와 같은 객체 지향 개념을 활용하여 모델링
-2. **관계형 데이터베이스 모델**
-   - 관계형 데이터베이스는 테이블, 열, 행으로 데이터를 저장
-   - SQL(Structured Query Language)을 사용하여 데이터를 검색, 삽입, 갱신, 삭제
-   - 데이터는 정형화된 스키마를 따르며 관계형 데이터베이스 관리 시스템(RDBMS)을 사용하여 관리
-
-ORM의 주요 목표는 이러한 **두 모델 간의 불일치를 해소하고 다음을 달성하는 것**입니다:
-
-1. **객체와 데이터베이스 간의 매핑**
-   - 객체를 데이터베이스 테이블로 매핑하고, 객체의 속성을 데이터베이스 열에 매핑
-
-2. **CRUD 연산의 추상화**
-   - 객체를 통해 데이터를 삽입, 검색, 갱신, 삭제(CRUD)할 수 있도록 추상화된 인터페이스를 제공
-
-3. **객체 지향 쿼리 언어**
-   - 객체 지향 언어를 사용하여 데이터베이스에서 쿼리를 작성할 수 있도록 지원
-   - 예를 들어, JPQL(Java Persistence Query Language)는 JPA의 일부로 객체를 대상으로 하는 쿼리 언어
-
-4. **지연 로딩 및 성능 최적화**
-   - ORM은 객체 그래프를 관리하고 필요에 따라 데이터를 지연 로딩하여 성능을 최적화
-
-ORM 프레임워크의 예시로는 Hibernate, Java Persistence API (JPA), Entity Framework (.NET), Django ORM (Python), SQLAlchemy (Python) 등이 있습니다. 이러한 프레임워크를 사용하면 개발자는 데이터베이스와의 상호 작용을 단순화하고 객체 지향 프로그래밍 모델을 유지하면서 데이터를 다룰 수 있습니다.
-
- 
-
-### JPA를 왜 사용해야 하는걸까?
-
-JPA(Java Persistence API)를 사용해야 하는 이유는 여러 가지가 있습니다. 다음은 JPA를 사용하는 장점과 이유에 대한 몇 가지 주요 내용입니다:
-
-1. **객체-관계 매핑의 편리함**
-   - JPA는 객체와 관계형 데이터베이스 간의 매핑을 단순화
-   - 이는 객체 지향 언어인 Java와 관계형 데이터베이스 간의 패러다임 불일치를 해결하는 데 도움
-   - 개발자는 객체를 사용하여 데이터를 다룰 수 있으며, JPA가 객체와 데이터베이스 간의 변환 작업을 처리
-2. **생산성 향상**
-   - JPA를 사용하면 SQL을 직접 작성할 필요가 없음
-   - JPQL(Java Persistence Query Language) 또는 Criteria API와 같은 풍부한 쿼리 언어를 통해 데이터를 검색하고 조작이 가능
-   - 개발 생산성을 향상시키고 코드의 가독성을 높이는데 기여
-3. **표준화된 접근 방식**
-   - JPA는 Java EE 스펙의 일부로서 표준화되어 있어 다양한 자바 기반 애플리케이션에서 사용
-   - 애플리케이션을 특정 데이터베이스 제품에 종속하지 않도록 해주며, 데이터베이스 변경 시 코드 수정을 최소화
-4. **객체 지향적 프로그래밍**
-   - JPA는 객체 지향 프로그래밍을 지원
-   - 데이터베이스의 테이블과 열을 객체와 속성에 매핑함으로써 객체 지향 모델을 사용하여 데이터를 핸들링
-5. **지연 로딩 및 성능 최적화**
-   - JPA는 지연 로딩을 통해 연관된 객체를 필요할 때 로드하므로 성능을 최적화
-   - 또한 캐싱 및 성능 튜닝 기능을 지원
-6. **트랜잭션 관리**
-   - JPA는 데이터베이스 트랜잭션을 관리하는 기능을 제공하므로 데이터 일관성을 유지가 가능
-7. **보안**
-   - JPA는 SQL 주입 공격을 방지하는 데 도움을 주며, 엔터티와 역할 기반 보안 모델을 사용이 가능
-8. **풍부한 에코시스템**
-   - JPA를 지원하는 다양한 프레임워크와 도구가 존재
-   - 에코시스템을 활용하여 개발을 단순화하고 품질을 향상이 가능
-
-종합하면, JPA는 **데이터베이스와 상호 작용을 단순화하고 개발자에게 객체 지향 프로그래밍 모델을 유지하면서 데이터를 다룰 수 있는 강력한 도구**입니다. 이로 인해 개발자는 생산성을 향상시키고 유지 보수 비용을 줄일 수 있으며, 데이터베이스와의 상호 작용에 관련된 복잡성을 감소시킬 수 있습니다.
-
- 
-
-**그럼 JPA 안에서 JDBC는 어떻게 작동 되는걸까?**
-
-애플리케이션이 JPA에게 명령을 내려서 JDBC API를 사용 한다.
-
-JPA가 중간에서 객체에 따라 SQL문을 자동으로 작성해주는 역할을 한다.
+그러다 EJB를쓰던 외국의 SI 개발자(`개빈 킹`)가 저녁에 퇴근하고 내가 만들어도 이것보단 낳겠다 해서 ORM 프레임워크(Hibernate)를 만들기 시작하였다. 이에 많은 사람들이 동참하고 오픈소스로 개발되기 시작되었다.
 
 
 
-![img](https://blog.kakaocdn.net/dn/bunflp/btq4vRzExRN/X3JRNEhaes04yi5SYXivf0/img.png)
+그러다 EJB가 망하고 Hibernate가 뜨게 된다. Java 진영에서 반성을 하고 개빈 킹을 그대로 잡아와서 Hibernate를 복사붙이기하다 싶이 만든게 `JPA(자바 표준)` 이다.
 
+참고로, EJB의 불편함을 개선하려던 한 SI 개발자 덕분에 스프링 프레임워크도 탄생하게 되었다. EJB 의 문제점 덕분에 Spring 프레임워크와 JPA가 탄생하게 된 것이다.
 
+## JPA는 표준 명세
 
-**JPA는 이렇게 생겨났어요!**
+JPA는 **인터페이스의 모음** 이다. JPA 2.1 표준 명세를 구현한 3가지 구현체는 `Hibernate`, `EclipseLink`, `DataNucleus` 이다.
 
- EJB(자바 표준) -> 하이버네이트(오픈 소스) -> JPA(자바 표준)
+[![image](https://user-images.githubusercontent.com/44339530/138621644-5a80934f-77ba-48ed-96e3-1b8ba41aa5ce.png)](https://user-images.githubusercontent.com/44339530/138621644-5a80934f-77ba-48ed-96e3-1b8ba41aa5ce.png)
 
- 
+## JPA 버전
 
-**JPA는 이렇게 구성되어있어요!**
+- JPA 1.0(JSR 220) 2006년 : 초기 버전. 복합 키와 연관관계 기능이 부족
+- JPA 2.0(JSR 317) 2009년 : 대부분의 ORM 기능을 포함, JPA Criteria 추가
+- JPA 2.1(JSR 338) 2013년 : 스토어드 프로시저 접근, 컨버터(Converter), 엔티티 그래프 기능이 추가
 
+> **Note**: JPA 2.2를 사용할 거기에 왠만한 기능은 다된다고 보면 된다.
 
+## JPA를 왜 사용해야 하는가?
 
-![img](https://blog.kakaocdn.net/dn/bkUkqa/btq4vSFnYwv/iCilDyFn8qoM2P3NQXgiSK/img.png)
+- 1)SQL 중심적인 개발에서 객체 중심으로 개발
+- 2)생산성
+- 3)유지보수
+- 4)패러다임의 불일치 해결
+- 5)성능
+- 6)데이터 접근 추상화와 벤더 독립성
+- 7)표준
 
+### 1) SQL 중심적인 개발에서 객체 중심으로 개발
 
+[이전 강의 포스팅](https://jeonyoungho.github.io/posts/2SQL-중심적인-개발의-문제점/) 을 참고하자.
 
- 
+### 2) 생산성 - JPA와 CRUD
 
+- 저장: jpa.persist(member)
+- 조회: Member member = jpa.find(memberId)
+- 수정: member.setName(“변경할 이름”)
+- 삭제: jpa.remove(member)
+
+한 줄만 작성하면 되기에 좋은 생산성을 가질 수 있다. 뒤에 나오겠지만 JPA의 영속성 컨텍스트로 인해 컬렉션에서 단순하게 조회 후 setName만 호출하여 update 할 수 있다.
+
+### 3) 유지보수 - 기존: 필드 변경시 모든 SQL 수정
+
+[![image](https://user-images.githubusercontent.com/44339530/138622137-b131ee07-b783-4280-aee4-8e231877b2aa.png)](https://user-images.githubusercontent.com/44339530/138622137-b131ee07-b783-4280-aee4-8e231877b2aa.png)
+
+기존 객체의 필드가 수정되면 쿼리도 일일이 수정해야만 한다. 하지만 JPA를 사용하면 필드를 수정하더라도 쿼리를 손댈 필요가 없다.
+
+### 4) JPA와 패러다임의 불일치 해결
+
+- 1.JPA와 상속
+- 2.JPA와 연관관계
+- 3.JPA와 객체 그래프 탐색
+- 4.JPA와 비교하기
+
+#### 1. JPA와 상속
+
+[![image](https://user-images.githubusercontent.com/44339530/138622445-76e42871-dfa3-4370-8c1e-1481c5b106f8.png)](https://user-images.githubusercontent.com/44339530/138622445-76e42871-dfa3-4370-8c1e-1481c5b106f8.png)
+
+- 저장 시
+  - 개발자가 할일: `jpa.persist(album);`
+  - 나머진 JPA가 처리: `INSERT INTO ITEM ...`, `INSERT INTO ALBUM ...`
+- 조회 시
+  - 개발자가 할 일: `Album album = jpa.find(Album.class, albumId);`
+  - 나머진 JPA가 처리: `SELECT I.*, A.* FROM ITEM I JOIN ALBUM A ON I.ITEM_ID = A.ITEM_ID`
+
+#### 2.JPA와 연관관계
+
+연관 관계 저장
+
+```
+member.setTeam(team);
+jpa.persist(member);
+```
+
+#### 3.JPA와 객체 그래프 탐색
+
+객체 그래프 탐색
+
+```
+Member member = jpa.find(Member.class, memberId);
+Team team = member.getTeam();
+
+class MemberService {
+...
+public void process() {
+Member member = memberDAO.find(memberId);
+member.getTeam(); //자유로운 객체 그래프 탐색
+member.getOrder().getDelivery();
+}
+}
+```
+
+JPA를 통해 객체를 가져온거면 자유롭게 객체 그래프를 탐색할 수 있다. 지연로딩을 통해 객체를 조회해서 사용하는 시점에 sql이 호출되서 데이터가 채워질 수 있다. 즉, JPA를 사용해서 가져온 객체는 `신뢰하고 사용할 수 있게 된다.`
+
+#### 4. JPA와 비교하기
+
+```
+String memberId = "100";
+Member member1 = jpa.find(Member.class, memberId);
+Member member2 = jpa.find(Member.class, memberId);
+member1 == member2; //같다.
+```
+
+**JPA에서 동일한 트랜잭션에서 조회한 엔티티는 같음을 보장한다.**
+
+### 5) JPA의 성능 최적화 기능
+
+계층 사이에 중간 계층이 있으면 항상 모아서 쓰는 버퍼링과 캐슁하는 것을 할 수 있다. cpu나 메모리 구조도 마찬가지이다.
+
+- 1)1차 캐시와 동일성(identity) 보장
+- 2)트랜잭션을 지원하는 쓰기 지연(transactional write-behind)
+- 3)지연 로딩(Lazy Loading)
+
+#### 1. 1차 캐시와 동일성 보장
+
+- 같은 트랜잭션 안에서는 같은 엔티티를 반환 - 약간의 조회 성능 향상
+- DB Isolation Level이 Read Commit이어도 애플리케이션에서 Repeatable Read 보장
+
+```
+String memberId = "100";
+Member m1 = jpa.find(Member.class, memberId); //SQL
+Member m2 = jpa.find(Member.class, memberId); //캐시
+println(m1 == m2) //true
+SQL 1번만 실행
+```
+
+두번째 조회시엔 캐슁된 값을 반환하게 된다. 사실 실무에서 성능상 크게 이점은 없다.
+
+#### 2. 트랜잭션을 지원하는 쓰기 지연(transactional write-behind) - UPDATE (버퍼링 기능)
+
+- UPDATE, DELETE로 인한 로우(ROW)락 시간 최소화
+- JDBC BATCH SQL 기능을 사용해서 한 번에 SQL 전송
+
+```
+transaction.begin(); // [트랜잭션] 시작
+changeMember(memberA);
+deleteMember(memberB);
+비즈니스_로직_수행(); //비즈니스 로직 수행 동안 DB 로우 락이 걸리지 않는다.
+//커밋하는 순간 데이터베이스에 UPDATE, DELETE SQL을 보낸다.
+transaction.commit(); // [트랜잭션] 커밋
+```
+
+#### 3. 지연 로딩(Lazy Loading)과 즉시 로딩(Eager Loading)
+
+- 지연 로딩: 객체가 실제 사용될 때 로딩
+  - 실제 Team 객체의 필드를 접근할때 Team 테이블로부터의 조회 쿼리를 날려서 데이터를 얻어옴
+- 즉시 로딩: JOIN SQL로 한번에 연관된 객체까지 미리 조회
+  - 한 번에 join을 활용하여 연관된 모든 데이터를 얻어옴
+
+[![image](https://user-images.githubusercontent.com/44339530/138628388-db0169ec-bd8e-4b86-ac02-966971d471de.png)](https://user-images.githubusercontent.com/44339530/138628388-db0169ec-bd8e-4b86-ac02-966971d471de.png)
+
+> **Note**: Member를 사용할때 무조건 Team객체를 같이 사용한다? 그러면 즉시 로딩 옵션을 설정해주면 무조건 한 번에 같이 가져오게 할 수 있다. 하지만 어쩌다가 Team객체를 사용하다면 지연 로딩 옵션을 설정해주면 된다.
+
+**지연로딩을 기본으로 코드를 작성한 다음에 최적화가 필요할때만 최적화를 하는 방식으로 작성한다.**
+
+### 6) 데이터 접근 추상화와 벤더 독립성
+
+### 7) 표준
+
+# 정리
+
+ORM은 객체와 RDB 두기둥위에 있는 기술이다. 객체와 RDB 둘 사이의 밸런스를 정말 잘맞춰야 한다. 둘 다 정말 잘할 줄 알아야 한다. 둘 중에 더 중요한걸 굳이 꼽자면 RDB다. RDB에서 데이터라는게 훨씬 오래 살아남는다. 꾸준히 관계형 DB에 대해 학습을 수행해야 한다.
