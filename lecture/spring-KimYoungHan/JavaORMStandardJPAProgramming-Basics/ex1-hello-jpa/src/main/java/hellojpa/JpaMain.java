@@ -11,10 +11,13 @@ public class JpaMain {
 
         try {
             // 영속
-            Member findMember1 = em.find(Member.class, 101L);
-            Member findMember2 = em.find(Member.class, 101L);
-            System.out.println(findMember1 == findMember2);
+            Member member1 = em.find(Member.class, 150L);
+            member1.setName("AAAAA");
 
+            em.clear();
+            Member member2 = em.find(Member.class, 150L);
+
+            System.out.println("============================");
             tx.commit();
         } catch (Exception e) {
             tx.rollback();
