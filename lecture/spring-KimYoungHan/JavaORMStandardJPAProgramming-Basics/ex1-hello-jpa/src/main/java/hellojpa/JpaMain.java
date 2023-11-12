@@ -10,16 +10,11 @@ public class JpaMain {
         tx.begin();
 
         try {
-            // 비영속 상태
-            Member member = new Member();
-            member.setId(100L);
-            member.setName("HelloJPA");
+            // 영속
+            Member findMember1 = em.find(Member.class, 101L);
+            Member findMember2 = em.find(Member.class, 101L);
+            System.out.println(findMember1 == findMember2);
 
-            System.out.println("====== BEFORE =======");
-            em.persist(member);
-
-            // 영속 상태
-            System.out.println("====== AFTER =======");
             tx.commit();
         } catch (Exception e) {
             tx.rollback();
