@@ -10,14 +10,7 @@ public class JpaMain {
         tx.begin();
 
         try {
-            // 영속
-            Member member1 = em.find(Member.class, 150L);
-            member1.setName("AAAAA");
 
-            em.clear();
-            Member member2 = em.find(Member.class, 150L);
-
-            System.out.println("============================");
             tx.commit();
         } catch (Exception e) {
             tx.rollback();
