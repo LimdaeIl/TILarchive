@@ -233,81 +233,118 @@ public class Period {
 
  
 
-### 🌞 @AttributeOverride: 속성 재정의
+## 4. @AttributeOverride
 
- 만약 한 엔티티에서 같은 값 타입을 사용하려면 컬럼 명 중복 문제가 있기 때문에 `@AttributeOverrides`, `@AttributeOverride`를 사용해서 컬럼 명 속성을 재정의해야 한다.
+- `@AttributeOverride`는 Java Persistence API (JPA)에서 사용되는 어노테이션 중 하나입니다. 
+- 엔터티 클래스에서 매핑한 **속성(필드 또는 메서드)의 매핑 설정을 재정의할 때 사용**됩니다.
+
+
+
+### 4.1  @AttributeOverride 예제 1
+
+기본적으로 JPA는 엔터티 클래스의 필드 또는 메서드 이름을 사용하여 데이터베이스 테이블의 열과 속성을 매핑합니다. 그러나 때로는 데이터베이스 테이블의 열 이름을 변경하거나 다른 속성을 사용해야 할 경우가 있습니다. 이런 경우에 `@AttributeOverride` 어노테이션을 사용할 수 있습니다.
+
+예를 들어, 다음과 같은 엔터티 클래스가 있다고 가정해 봅시다:
 
 ```java
-// 아래와 같이 정의하면 Repeated column in mapping for entity 에러 발생
-@Embedded
-private Address HomeAddress;
-
-@Embedded
-private Address workAddress;
-@Embedded
-private Address HomeAddress;
-
-@Embedded
-@AttributeOverrides({
-        @AttributeOverride(name = "city",
-                column = @Column(name = "WORK_CITY")),
-        @AttributeOverride(name = "street",
-                column = @Column(name = "WORK_STREET")),
-        @AttributeOverride(name = "zipcode",
-                column = @Column(name = "WORK_ZIPCODE"))
-})
-private Address workAddress;
+@Entity
+public class Employee {
+    @Id
+    private Long id;
+    
+    private String name;
+    
+    @Embedded
+    private Address address;
+    
+    // 다른 필드 및 메서드들...
+}
 ```
 
+여기서 `Employee` 엔터티 클래스는 `Address`라는 임베디드 타입을 포함하고 있습니다. 
+이제 `Address` 클래스가 다음과 같이 정의되어 있다고 가정해 봅시다:
+
+```java
+@Embeddable
+public class Address {
+    private String street;
+    private String city;
+    private String zipCode;
+    
+    // 다른 필드 및 메서드들...
+}
+```
+
+이때, `Address` 클래스의 각 속성이 데이터베이스 테이블의 열로 매핑됩니다. 
+그러나 경우에 따라서는 **각각의 열에 대해 이름을 지정하고 싶을 수 있습니다. 이때 `@AttributeOverride`를 사용할 수 있습니다.**
+
+```java
+@Entity
+public class Employee {
+    @Id
+    private Long id;
+    
+    private String name;
+    
+    @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "street", column = @Column(name = "home_street")),
+        @AttributeOverride(name = "city", column = @Column(name = "home_city")),
+        @AttributeOverride(name = "zipCode", column = @Column(name = "home_zip_code"))
+    })
+    private Address address;
+    
+    // 다른 필드 및 메서드들...
+}
+```
+
+위의 예제에서는 `@AttributeOverrides`를 사용하여 `Address` 클래스의 각 속성에 대한 열 이름을 재정의하고 있습니다. 이렇게 하면 `Employee` 테이블이 생성될 때, `home_street`, `home_city`, `home_zip_code`와 같은 열 이름이 사용됩니다.
+
  
+
+## 5.값 타입과 불변 객체
+
+ 
+
+### 5.1 값 타입 공유 참조
+
+- 임베디드 타입 같은 값 타입을 여러 엔터티에서 공유하면 위험 -> 부작용(Side Effect) 발생
+- 값 타입의 실제 인스턴스인 값을 공유하는 것음 위험
+- 값(인스턴스)를 복사해서 사용해야 함 -> 새로운 객체에다가 값을 get해온다.
+
+
+
+### 5.2 객체 타입의 한계
+
+- 값을 복사해서 사용하면 공유 참조의 부작용을 막을 수 있다.
+- 임베디드 타입과 같이 직접 정의한 값 타입은 객체 타입이므로 참조값을 직접 대입하는 것을 막을 방법이 없다. 
+  -> 공유 참조를 피할 수 없다.
+
+
+
+### 5.3 불변 객체
+
+- 생성 시점 이후 절대 값을 변경할 수 없는 객체
+- 값 타입을 불변 객체로 설계하여 부작용을 차단해야 한다.
+  - 생성자로만 값을 설정하고 Setter를 만들지 않으면 된다.
+- Integer, String은 자바가 제공하는 불변 객체
+
+
+
+
 
 ------
 
  
 
-## 값 타입과 불변 객체
+## 6. 값 타입의 비교
 
- 
+- 값 타입은 인스턴스가 달라도 그 안에 값이 같으면 같은 것으로 봐야 한다. 
+- 값 타입은 `a.equals(b)`를 사용해서 동등성 비교를 해야 한다. 
+- 값 타입의 `equals()` 메소드를 적절하게 재정의한다.
 
-### 🌞 값 타입 공유 참조
-
- 임베디드 타입 같은 값 타입을 여러 엔티티에서 공유하면 부작용(Side Effect)가 발생해서 위험하다. 항상 값을 복사해서 사용하면 공유 참조를 피할 수 있지만 문제는 임베디드 타입처럼 직접 정의한 값 타입은 객체 타입이므로 참조 값을 직접 대입하는 것을 막을 방법이 없다. 즉, 객체의 공유 참조는 피할 수 없다. (타입만 맞으면 대입이 가능하다.)
-
-#### 기본 타입
-
-```java
-int a = 10;
-int b = a; // 값 복사 => b의 값을 변경하면 b만 update
-```
-
-#### 객체 타입
-
-```java
-Address a = new Address("Old");
-Address a = a;
-b.setCity("New"); // a와 b 둘 다 update
-```
-
- 
-
-### 🌞 불변 객체
-
- 불변 객체란 생성 시점 이후에 절대 값을 변경할 수 없는 객체를 말한다. 값 타입을 불변 객체로 설계하면 부작용을 차단할 수 있다. 생성자로만 값을 설정하고 수정자(Setter)를 만들지 않으면 된다. (혹은 private로 만든다.) 값을 바꾸고 싶으면 객체 자체를 새로 만들어서 교체하는 방법 등을 택할 수 있다.
-
- 
-
-------
-
- 
-
-## 값 타입의 비교
-
- 
-
- 값 타입은 인스턴스가 달라도 그 안에 값이 같으면 같은 것으로 봐야 한다. 값 타입은 `a.equals(b)`를 사용해서 동등성 비교를 해야 한다. 값 타입의 `equals()` 메소드를 적절하게 재정의한다.
-
-- 동일성(identity) 비교: 인스턴스의 참조 값을 비교한다. `==`
-- 동등성(equivalence) 비교: 인스턴스의 값을 비교한다. `equals`
+- 동일성(identity) 비교: 인스턴스의 참조 값을 비교한다, `== `사용
+- 동등성(equivalence) 비교: 인스턴스의 값을 비교한다, `equals` 사용
 
 ```typescript
 @Override
@@ -328,33 +365,24 @@ public int hashCode() {
 
  
 
-------
-
- 
-
-## 값 타입 컬렉션
-
- 
 
 
+### 6.1 값 타입 컬렉션
 
-![img](https://blog.kakaocdn.net/dn/bvV5W7/btrXIknYWhv/ixvtMOmLlHAoVuXmAVcDUK/img.png)
+<img src="https://blog.kakaocdn.net/dn/bvV5W7/btrXIknYWhv/ixvtMOmLlHAoVuXmAVcDUK/img.png" alt="img" style="zoom:67%;" />
+
+별도의 식별자 Id 값을 두면 값 타입이 아닌 엔티티가 됩니다. 실무에서는 상황에 따라 값 타입 컬렉션 대신에 일대다 관계를 고려합니다. 일대다 관계를 위한 엔티티를 만들고, 여기에 값 타입을 사용합니다. 영속성 전이와 고아 객체 제거를 사용해서 값 타입 컬렉션처럼 사용합니다. (값 타입을 엔티티로 승급합니다.)
 
 
 
-별도의 식별자 Id 값을 두면 값 타입이 아닌 엔티티가 되어버린다
+### 6.2 @ElementCollection, @CollctionTable
 
+- 값 타입을 하나 이상 저장할 때 사용합니다. 
+- 데이터베이스는 컬렉션을 같은 테이블에 저장할 수 없으므로 컬렉션을 저장하기 위한 별도의 테이블이 필요합니다. 
+- 값 타입 컬렉션도 지연 로딩 전략을 사용합니다.
 
-
- 실무에서는 상황에 따라 값 타입 컬렉션 대신에 일대다 관계를 고려한다. 일대다 관계를 위한 엔티티를 만들고, 여기에 값 타입을 사용한다. 영속성 전이와 고아 객체 제거를 사용해서 값 타입 컬렉션처럼 사용한다. (값 타입을 엔티티로 승급한다.)
-
-### 🌞 @ElementCollection, @CollctionTable
-
-닫기
-
- 값 타입을 하나 이상 저장할 때 사용한다. 데이터베이스는 컬렉션을 같은 테이블에 저장할 수 없으므로 컬렉션을 저장하기 위한 별도의 테이블이 필요하다. 값 타입 컬렉션도 지연 로딩 전략을 사용한다.
-
-Member의 username 필드와 같이 취급되기 때문에 Member 엔티티와 생명주기를 함께 한다. 영속성 전이(Cascade) + 고아 객체 제거 기능을 필수로 가진다.
+Member의 username 필드와 같이 취급되기 때문에 Member 엔티티와 생명주기를 함께 합니다. 
+영속성 전이(Cascade) + 고아 객체 제거 기능을 필수로 가집니다.
 
 ```java
 @Embedded
@@ -390,30 +418,36 @@ em.persist(member);
 
  
 
-### 🌞 제약사항
+## 7.  제약사항
 
- 값 타입은 엔티티와 다르게 식별자 개념이 없다. 또한 값은 변경하면 추적이 어렵다. 값 타입 컬렉션에 변경이 발생하면, 주인 엔티티와 연관된 모든 데이터를 삭제하고, 값 타입 컬렉션에 있는 현재 값을 모두 다시 저장한다.
-(값을 수정 및 삭제할 때 현재 MEMBER_ID와 관련된 데이터를 전부 지운다.)
+- 값 타입은 엔티티와 다르게 식별자 개념이 없습니다. 
+- 또한 값은 변경하면 추적이 어렵습니다. 
+- 값 타입 컬렉션에 변경이 발생하면, 주인 엔티티와 연관된 모든 데이터를 삭제하고, 값 타입 컬렉션에 있는 현재 값을 모두 다시 저장합니다. (값을 수정 및 삭제할 때 현재 MEMBER_ID와 관련된 데이터를 전부 지웁니다.)
+- 값 타입 컬렉션을 매핑하는 테이블은 모든 컬럼을 묶어서 기본 키를 구성해야 합니다. (null 입력 X, 중복 저장 X)
 
-값 타입 컬렉션을 매핑하는 테이블은 모든 컬럼을 묶어서 기본 키를 구성해야 한다. (null 입력 X, 중복 저장 X)
 
-#### 값 타입 수정
 
-값을 업데이트 할 때 사이드 이펙트 발생을 주의해서 set을 통해 수정하지 않고, 삭제 후 추가한다.
+### 7.1 값 타입 수정
+
+값을 업데이트 할 때 사이드 이펙트 발생을 주의해서 set을 통해 수정하지 않고, 삭제 후 추가합니다.
 
 ```java
 findMember.getFavoriteFoods().remove("치킨");
 findMember.getFavoriteFoods().add("한식");
 ```
 
-#### 값 타입 삭제
+
+
+
+
+### 7.2 값 타입 삭제
 
 ```java
 findMember.getAddressHistory().remove(new Address("old1", "street", "10000"));
 findMember.getAddressHistory().add(new Address("newCity1", "street", "10000"));
 ```
 
-delete 쿼리 한 번, insert 쿼리 한 번이 날아갈 것이라고 예상했으나, insert가 두 번(ord1, newCity1) 발생한다.
+delete 쿼리 한 번, insert 쿼리 한 번이 날아갈 것이라고 예상했으나, insert가 두 번(ord1, newCity1) 발생합니다.
 
 ```sql
 Hibernate: 
@@ -439,3 +473,5 @@ Hibernate:
         values
             (?, ?, ?, ?)
 ```
+
+실무에서는 값 타입 컬렉션 대신에 일대다 관계를 고려해야 합니다.
