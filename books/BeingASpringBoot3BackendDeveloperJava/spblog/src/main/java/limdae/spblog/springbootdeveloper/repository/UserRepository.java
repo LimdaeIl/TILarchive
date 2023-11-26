@@ -1,5 +1,6 @@
 package limdae.spblog.springbootdeveloper.repository;
 
+
 import limdae.spblog.springbootdeveloper.domain.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
