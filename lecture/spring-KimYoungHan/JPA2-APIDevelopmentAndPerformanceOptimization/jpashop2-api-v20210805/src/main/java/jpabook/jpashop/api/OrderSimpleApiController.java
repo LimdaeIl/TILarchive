@@ -24,12 +24,13 @@ import static java.util.stream.Collectors.toList;
  * Order -> Delivery
  *
  */
+
 @RestController
 @RequiredArgsConstructor
 public class OrderSimpleApiController {
 
     private final OrderRepository orderRepository;
-    private final OrderSimpleQueryRepository orderSimpleQueryRepository; //의존관계 주입
+    private final OrderSimpleQueryRepository orderSimpleQueryRepository; //의존 관계 주입
 
     /**
      * V1. 엔티티 직접 노출
