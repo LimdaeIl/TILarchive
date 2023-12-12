@@ -1,7 +1,6 @@
 # ☀️TILarchive 🌃
 
-학습 정리한 내용을 담은 리포지토리입니다. </br>
-주로 코드 중심으로 정리하고 있으며, 개인적으로 부족하다고 생각이 들거나 혹은 두고두고 학습해야 할 부분들에 대해 [`🍏벨로그🍏`](https://velog.io/@limdae)에 정리하고 있습니다.
+학습 정리한 내용을 담은 리포지토리입니다. 주로 코드 중심으로 정리하고 있으며, 개인적으로 부족하다고 생각이 들거나 혹은 두고두고 학습해야 할 부분들에 대해 [`🍏벨로그🍏`](https://velog.io/@limdae)에 정리하고 있습니다.
 
 ## 📚책
 - [`스프링 부트 3 백엔드 개발자 되기: 자바 편`](https://github.com/LimdaeIl/TILarchive/tree/main/books/BeingASpringBoot3BackendDeveloperJava)
