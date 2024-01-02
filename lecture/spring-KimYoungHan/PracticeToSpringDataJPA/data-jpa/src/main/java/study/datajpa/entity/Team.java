@@ -1,19 +1,20 @@
 package study.datajpa.entity;
 
 import jakarta.persistence.*;
-import lombok.*;
+import lombok.AccessLevel;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.util.ArrayList;
 import java.util.List;
 
-@Entity
 @Getter @Setter
+@Entity
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-@ToString(of = {"id", "name"})
-public class Team extends JpaBaseEntity {
+public class Team {
 
-    @Id
-    @GeneratedValue
+    @Id @GeneratedValue
     @Column(name = "team_id")
     private Long id;
     private String name;
