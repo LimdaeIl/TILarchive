@@ -34,4 +34,5 @@ class AdminUserAccountControllerTest {
                 .andExpect(content().contentTypeCompatibleWith(MediaType.TEXT_HTML))
                 .andExpect(view().name("admin/members"));
     }
+
 }
