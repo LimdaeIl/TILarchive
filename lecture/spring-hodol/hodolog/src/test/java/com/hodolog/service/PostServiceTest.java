@@ -3,6 +3,7 @@ package com.hodolog.service;
 import com.hodolog.domain.Post;
 import com.hodolog.repository.PostRepository;
 import com.hodolog.request.PostCreate;
+import com.hodolog.request.PostSearch;
 import com.hodolog.response.PostResponse;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -81,27 +82,26 @@ class PostServiceTest {
     }
 
     @Test
-    @DisplayName("글 1페이지 조회")
+    @DisplayName("글 여러개 조회")
     void test3() {
         // given
-        List<Post> requestPosts = IntStream.range(1, 31) // 더미 데이터 생성하기
+        List<Post> requestPosts = IntStream.range(0, 20) // 더미 데이터 생성하기
                 .mapToObj(i -> Post.builder()
-                        .title("호돌맨 제목 " + i)
-                        .content("반포자이 " + i)
+                        .title("foo" + i)
+                        .content("bar1" + i)
                         .build()
                 ).toList();
         postRepository.saveAll(requestPosts);
 
-        // sql -> select, limit, offset 쿼리에 대해 당연히 알고 있어야 한다.
-
-        Pageable pageable = PageRequest.of(0, 5, DESC, "id");
-
+        PostSearch postSearch = PostSearch.builder()
+                .page(1)
+                .size(10)
+                .build();
         // when
-        List<PostResponse> posts = postService.getList(pageable);
+        List<PostResponse> posts = postService.getList(postSearch);
 
         // then
-        assertEquals(5L, posts.size());
-        assertEquals("호돌맨 제목 30", posts.get(0).getTitle());
-        assertEquals("호돌맨 제목 26", posts.get(4).getTitle());
+        assertEquals(10L, posts.size());
+        assertEquals("foo9", posts.get(0).getTitle());
     }
 }
