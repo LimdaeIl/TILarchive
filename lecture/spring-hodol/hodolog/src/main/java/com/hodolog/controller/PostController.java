@@ -1,6 +1,7 @@
 package com.hodolog.controller;
 
 import com.hodolog.request.PostCreate;
+import com.hodolog.request.PostEdit;
 import com.hodolog.request.PostSearch;
 import com.hodolog.response.PostResponse;
 import com.hodolog.service.PostService;
@@ -18,8 +19,6 @@ public class PostController {
 
     private final PostService postService;
 
-    // 글 등록, 근
-
     @PostMapping("/posts")
     public void post(@RequestBody @Valid PostCreate request) {
         postService.write(request);
@@ -33,5 +32,10 @@ public class PostController {
     @GetMapping("/posts")
     public List<PostResponse> getList(@ModelAttribute PostSearch pageable) {
         return postService.getList(pageable);
+    }
+
+    @PatchMapping("/posts/{postId}")
+    public void edit(@PathVariable Long postId, @RequestBody @Valid PostEdit request) {
+        postService.edit(postId, request);
     }
 }
