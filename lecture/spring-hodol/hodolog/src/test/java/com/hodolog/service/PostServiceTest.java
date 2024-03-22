@@ -1,6 +1,7 @@
 package com.hodolog.service;
 
 import com.hodolog.domain.Post;
+import com.hodolog.exception.PostNotFound;
 import com.hodolog.repository.PostRepository;
 import com.hodolog.request.PostCreate;
 import com.hodolog.request.PostEdit;
@@ -178,4 +179,69 @@ class PostServiceTest {
         assertEquals(0, postRepository.count());
     }
 
+    @Test
+    @DisplayName("글 1개 조회")
+    void test7() {
+        // given
+        Post post = Post.builder()
+                .title("호돌맨")
+                .content("반포자이")
+                .build();
+        postRepository.save(post);
+
+        // expected
+        assertThrows(PostNotFound.class, () -> {
+            postService.get(post.getId() + 1L);
+        });
+
+        // IllegalArgumentException 는 어디에서나 쉽게 발생할 수 있는 에러이기 때문에 에러 메세지도 함께 체크해야 합니다.
+        // 서비스에서 존재하지 않는 글인 것을 검증하는데, 개발자가 글이 아니라 글 이네요 라고 변경하면 테스트에서도 예외 문구를 전부 변경해야 합니다.
+        // 항상 이 메세지가 맞는지 검증해야 합니다. 매우 귀찮은 작업입니다. 예전에는 상수로 테스트 케이스도 함께 변경하도록 했습니다.
+        // 더 좋은 방법은 IllegalArgumentException 은 경우에는 스프링이 아닌 자바에서 제공해주는 예외입니다. 그래서 비즈니스에 가깝고 명확하게 나타낼 수 없습니다.
+        // PostNotFound 이러한 방식으로 예외 처리하는 것이 가장 좋습니다. 예외 처리 클래스를 생성하는 것입니다.
+    }
+
+    @Test
+    @DisplayName("게시글 삭제 - 존재하지 않는 글")
+    void test8() {
+        // given
+        Post post = Post.builder()
+                .title("호돌맨")
+                .content("반포자이")
+                .build();
+        postRepository.save(post);
+
+        // expected
+        assertThrows(PostNotFound.class, () -> {
+            postService.delete(post.getId() + 1L);
+        });
+
+    }
+
+    @Test
+    @DisplayName("글 내용 수정 - 존재하지 않는 글")
+    void test9() {
+        // given
+        Post post = Post.builder()
+                .title("호돌맨")
+                .content("반포자이")
+                .build();
+        postRepository.save(post);
+
+        PostEdit postEdit = PostEdit.builder()
+                .title("호돌맨")
+                .content("초가집")
+                .build();
+
+        // expected
+        assertThrows(PostNotFound.class, () -> {
+            postService.edit(post.getId() + 1L, postEdit);
+        });
+
+        // then
+        Post changedPost = postRepository.findById(post.getId())
+                .orElseThrow(() -> new RuntimeException("글이 존재하지 않습니다. id= " + post.getId()));
+        assertEquals("초가집", changedPost.getContent());
+
+    }
 }

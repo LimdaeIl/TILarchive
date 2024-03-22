@@ -2,6 +2,7 @@ package com.hodolog.service;
 
 import com.hodolog.domain.Post;
 import com.hodolog.domain.PostEditor;
+import com.hodolog.exception.PostNotFound;
 import com.hodolog.repository.PostRepository;
 import com.hodolog.request.PostCreate;
 import com.hodolog.request.PostEdit;
@@ -34,7 +35,7 @@ public class PostService {
 
     public PostResponse get(Long postId) {
         Post post = postRepository.findById(postId)
-                .orElseThrow(() -> new IllegalArgumentException("존재하지 않는 글 입니다."));
+                .orElseThrow(PostNotFound::new);
 
         return PostResponse.builder()
                 .id(post.getId())
@@ -52,7 +53,7 @@ public class PostService {
     @Transactional
     public void edit(Long id, PostEdit postEdit) {
         Post post = postRepository.findById(id)
-                .orElseThrow(() -> new IllegalArgumentException("존재하지 않는 글입니다."));
+                .orElseThrow(PostNotFound::new);
 
         PostEditor.PostEditorBuilder editorBuilder = post.toEditor();
 
@@ -67,7 +68,9 @@ public class PostService {
         // 프론트 개발자 입장에서 생각해보면, 제목: 호돌맨 내용: 반포자이-> 초가집 으로 수정한다고 가정합니다.
         // 타이틀은 수정안하니까 null 로 보내고, 컨텐트는 초가집으로 보내게 되는 경우가 있습니다.
         // 아래처럼하면 검증을 안하고 그냥 postEdit.getTitle() 을 때려 넣은 것이기 때문에 문제가 됩니다.
+
         // postEdit.getTitle() != null ? postEdit.getTitle() : post.getTitle(); 으로 처리해야 합니다.
+
         // 기존의 저장된 제목을 유지하거나 수정된 제목을 넣어야 한다는 것입니다.
         // 이러한 문제점은 코드 가독성이나 유지 보수가 어렵기 때문에 PostEditor 을 사용하는 것입니다.
 //        post.edit(postEdit.getTitle(), postEdit.getContent());
@@ -76,7 +79,7 @@ public class PostService {
 
     public void delete(Long id) {
         Post post = postRepository.findById(id)
-                .orElseThrow(() -> new IllegalArgumentException("존재하지 않는 글입니다."));
+                .orElseThrow(PostNotFound::new);
         postRepository.delete(post);
     }
 }
