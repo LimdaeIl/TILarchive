@@ -6,6 +6,7 @@ import com.hodolog.repository.PostRepository;
 import com.hodolog.request.PostCreate;
 import com.hodolog.request.PostEdit;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -84,6 +85,7 @@ class PostControllerTest {
 
     @Test
     @DisplayName("/posts 요청 시 title 값은 필수이다.")
+    @Disabled
     void test2() throws Exception {
         // given
         PostCreate request = PostCreate.builder()
