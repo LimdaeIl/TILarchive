@@ -1,8 +1,11 @@
 package com.hodolog.controller;
 
+import com.hodolog.exception.HodologException;
+import com.hodolog.exception.InvalidRequest;
 import com.hodolog.response.ErrorResponse;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -21,10 +24,27 @@ public class ExceptionController {
                 .message("잘못된 요청입니다.")
                 .build();
 
-        for(FieldError fieldError : e.getFieldErrors()) {
+        for (FieldError fieldError : e.getFieldErrors()) {
             errorResponse.addValidation(fieldError.getField(), fieldError.getDefaultMessage());
         }
 
         return errorResponse;
+    }
+
+
+    @ExceptionHandler(HodologException.class)
+    public ResponseEntity<ErrorResponse> hodologException(HodologException e) {
+        int statusCode = e.getStatusCode();
+
+        ErrorResponse body = ErrorResponse.builder()
+                .code(String.valueOf(statusCode))
+                .validation(e.getValidation())
+                .message(e.getMessage())
+                .build();
+
+        ResponseEntity<ErrorResponse> response = ResponseEntity.status(statusCode)
+                .body(body);
+
+        return response;
     }
 }
