@@ -5,7 +5,7 @@ import axios from "axios";
 const title = ref("")
 const content = ref("")
 const write = function () {
-  axios.post("/posts", {
+  axios.post("/api/posts", {
     title: title.value,
     content: content.value
   });
