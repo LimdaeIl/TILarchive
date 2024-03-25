@@ -57,35 +57,8 @@ class PostControllerTest {
     @Autowired
     private ObjectMapper objectMapper;
 
-
     @Test
-    @DisplayName("/posts 요청 시 Hello World 를 출력한다.")
-    void test() throws Exception {
-        // given
-        PostCreate request = PostCreate.builder()
-                .title("제목입니다.")
-                .content("내용입니다.")
-                .build();
-
-        String json = objectMapper.writeValueAsString(request);// 자바 빈 규약에 따라 JSON 으로 변경합니다.
-
-        System.out.println("json = " + json);
-
-        // expected
-        mockMvc.perform(post("/posts")
-                        .contentType(APPLICATION_JSON)
-                        .content(json)
-                )
-                .andExpect(status().isOk()) // 200 확인
-                .andExpect(content().string("")) // 반환값 확인
-                .andDo(print()); // 콘솔에 HTTP 요약
-
-        // db -> post 1개 수행
-    }
-
-    @Test
-    @DisplayName("/posts 요청 시 title 값은 필수이다.")
-    @Disabled
+    @DisplayName("글 작성 요청 시 title 값은 필수이다.")
     void test2() throws Exception {
         // given
         PostCreate request = PostCreate.builder()
@@ -97,8 +70,7 @@ class PostControllerTest {
         // expected
         mockMvc.perform(post("/posts")
                         .contentType(APPLICATION_JSON)
-                        .content(json)
-                )
+                        .content(json))
                 .andExpect(status().isBadRequest())
                 .andExpect(jsonPath("$.code").value("400"))
                 .andExpect(jsonPath("$.message").value("잘못된 요청입니다."))
@@ -110,7 +82,7 @@ class PostControllerTest {
     }
 
     @Test
-    @DisplayName("/posts 요청 시 DB 에 값이 저장된다.")
+    @DisplayName("글 작성 요청 시 DB 에 값이 저장된다.")
     void test3() throws Exception {
         // given
         PostCreate request = PostCreate.builder()
