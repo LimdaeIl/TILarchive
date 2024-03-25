@@ -1,17 +1,17 @@
 package com.hodolog.exception;
 
 /**
- * status -> 404 이상적 정책
+ * status -> 401
  */
-public class PostNotFound extends HodologException {
-
+public class Unauthorized extends HodologException {
     private static final String MESSAGE = "존재하지 않는 글입니다.";
 
-    public PostNotFound() {
+    public Unauthorized() {
         super(MESSAGE);
     }
+
     @Override
     public int getStatusCode() {
-        return 404;
+        return 401;
     }
 }

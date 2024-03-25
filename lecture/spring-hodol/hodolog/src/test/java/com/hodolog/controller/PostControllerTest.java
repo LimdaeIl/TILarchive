@@ -6,7 +6,6 @@ import com.hodolog.repository.PostRepository;
 import com.hodolog.request.PostCreate;
 import com.hodolog.request.PostEdit;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,7 +24,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.springframework.http.MediaType.APPLICATION_JSON;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @AutoConfigureMockMvc
 @SpringBootTest
@@ -90,10 +90,11 @@ class PostControllerTest {
                 .content("내용입니다.")
                 .build();
 
-        String json = objectMapper.writeValueAsString(request);// 자바 빈 규약에 따라 JSON 으로 변경합니다.
+        String json = objectMapper.writeValueAsString(request); // 자바 빈 규약에 따라 JSON 으로 변경합니다.
 
         // when
         mockMvc.perform(post("/posts")
+                        .header("authorization", "hodolman")
                         .contentType(APPLICATION_JSON)
                         .content(json)
                 )
