@@ -21,8 +21,10 @@ public class AuthController {
 
     @PostMapping("/auth/login")
     public SessionResponse login(@RequestBody Login login) {
-        String accessToken = authService.signIn(login);
+        String accessToken = authService.signIn(login); /
 
         return new SessionResponse(accessToken);
     }
+
+
 }

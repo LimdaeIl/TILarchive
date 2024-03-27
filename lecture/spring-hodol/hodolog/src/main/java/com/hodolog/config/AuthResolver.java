@@ -1,14 +1,20 @@
 package com.hodolog.config;
 
 import com.hodolog.config.data.UserSession;
+import com.hodolog.domain.Session;
 import com.hodolog.exception.Unauthorized;
+import com.hodolog.repository.SessionRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.core.MethodParameter;
 import org.springframework.web.bind.support.WebDataBinderFactory;
 import org.springframework.web.context.request.NativeWebRequest;
 import org.springframework.web.method.support.HandlerMethodArgumentResolver;
 import org.springframework.web.method.support.ModelAndViewContainer;
 
+@RequiredArgsConstructor
 public class AuthResolver implements HandlerMethodArgumentResolver {
+
+    private final SessionRepository sessionRepository;
 
     // 요청에 대한 라우터가 넘어왔을 때 원하는 DTO 인지 물어보는 것
     @Override
@@ -24,9 +30,9 @@ public class AuthResolver implements HandlerMethodArgumentResolver {
             throw new Unauthorized();
         }
 
-        // 데이터베이스 사용자 확인 작업
-        // ...
+        Session session = sessionRepository.findByAccessToken(accessToken)
+                .orElseThrow(Unauthorized::new);
 
-        return new UserSession(1L);
+        return new UserSession(session.getUser().getId());
     }
 }
