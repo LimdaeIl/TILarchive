@@ -3,7 +3,8 @@ spring:
     web:
       pageable:
         one-indexed-parameters: true
-        default-page-size: 5
+        default-page-size: 20
+        max-page-size: 2000
 
   datasource:
     url: jdbc:h2:tcp://localhost/~/test
@@ -22,3 +23,10 @@ spring:
   sql:
     init:
       mode: always
+
+hodolman:
+  hello:
+    name: "hodolman"
+    home: "seoul"
+    hobby: "rpogramming"
+    age: 35

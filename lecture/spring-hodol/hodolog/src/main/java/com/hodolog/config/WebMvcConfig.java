@@ -14,8 +14,10 @@ public class WebMvcConfig implements WebMvcConfigurer {
 
     private final SessionRepository sessionRepository;
 
+    private final  AppConfig appConfig;
+
     @Override
     public void addArgumentResolvers(List<HandlerMethodArgumentResolver> resolvers) {
-        resolvers.add(new AuthResolver(sessionRepository));  // AuthResolver 클래스 안에 DTO 체크
+        resolvers.add(new AuthResolver(sessionRepository, appConfig));  // AuthResolver 클래스 안에 DTO 체크
     }
 }

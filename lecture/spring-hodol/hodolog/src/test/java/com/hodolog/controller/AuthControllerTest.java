@@ -158,7 +158,7 @@ class AuthControllerTest {
         mockMvc.perform(get("/foo")
                         .header("Authorization", session.getAccessToken())
                         .contentType(APPLICATION_JSON))
-                .andExpect(status().isOk()) // isUnauthorized -> 401 에러
+                .andExpect(status().isUnauthorized()) // isUnauthorized -> 401 에러
                 .andDo(print());
     }
 
