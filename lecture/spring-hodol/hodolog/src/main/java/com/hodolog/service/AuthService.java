@@ -1,29 +1,36 @@
 package com.hodolog.service;
 
-import com.hodolog.domain.Session;
+import com.hodolog.crypto.PasswordEncoder;
 import com.hodolog.domain.User;
-import com.hodolog.exception.InvalidSignInInformation;
+import com.hodolog.exception.AlreadyExistsEmailException;
 import com.hodolog.repository.UserRepository;
-import com.hodolog.request.Login;
+import com.hodolog.request.Signup;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
+
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
 public class AuthService {
 
-
     private final UserRepository userRepository;
+    private final PasswordEncoder passwordEncoder;
 
-    @Transactional
-    public Long signIn(Login login) {
-        User user = userRepository.findByEmailAndPassword(login.getEmail(), login.getPassword())
-                .orElseThrow(InvalidSignInInformation::new);
+    public void signup(Signup signup) {
+        Optional<User> byEmail = userRepository.findByEmail(signup.getEmail());
+        if (byEmail.isPresent()) {
+            throw new AlreadyExistsEmailException();
+        }
 
-        Session session = user.addSession();
 
-        return user.getId();
+        String encryptedPassword = passwordEncoder.encrypt(signup.getPassword());
 
+        User user = User.builder()
+                .name(signup.getName())
+                .email(signup.getEmail())
+                .password(encryptedPassword)
+                .build();
+        userRepository.save(user);
     }
 }

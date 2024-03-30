@@ -24,9 +24,10 @@ spring:
     init:
       mode: always
 
+  session:
+    jdbc:
+      initialize-schema: always
+    timeout: 86400
+
 hodolman:
-  hello:
-    name: "hodolman"
-    home: "seoul"
-    hobby: "rpogramming"
-    age: 35
+  jwt-key: "1lwItElB4ceTGKXcPhB6Pynodfz9qt/z0DHbRlLx0lY="

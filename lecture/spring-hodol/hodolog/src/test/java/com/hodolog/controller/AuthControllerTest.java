@@ -1,13 +1,11 @@
 package com.hodolog.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.hodolog.domain.Session;
 import com.hodolog.domain.User;
 import com.hodolog.exception.InvalidSignInInformation;
 import com.hodolog.repository.PostRepository;
-import com.hodolog.repository.SessionRepository;
 import com.hodolog.repository.UserRepository;
-import com.hodolog.request.Login;
+import com.hodolog.request.Signup;
 import org.hamcrest.Matchers;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -47,8 +45,7 @@ class AuthControllerTest {
     @Autowired
     private UserRepository userRepository;
 
-    @Autowired
-    private SessionRepository sessionRepository;
+
 
     @BeforeEach
     void setup() {
@@ -64,122 +61,23 @@ class AuthControllerTest {
         postRepository.deleteAll();
     }
 
-    @Test
-    @DisplayName("로그인 성공")
-    void test() throws Exception {
-        // given
-//        userRepository.save(User.builder() // 이미 생성됨
-//                .name("호돌맨")
-//                .email("hodolman88@gmail.com")
-//                .password("1234")
-//                .build());
 
-        Login login = Login.builder()
-                .email("hodolman88@gmail.com")
+    @Test
+    @DisplayName("회원가입")
+    void test6() throws Exception {
+        // given
+        Signup signup = Signup.builder()
                 .password("1234")
-                .build();
-
-        String json = objectMapper.writeValueAsString(login);// 자바 빈 규약에 따라 JSON 으로 변경합니다.
-
-        // expected
-        mockMvc.perform(post("/auth/login")
-                        .contentType(APPLICATION_JSON)
-                        .content(json))
-                .andExpect(status().isOk())
-                .andDo(print());
-        // given
-
-        // when
-    }
-
-    @Test
-    @Transactional
-    @DisplayName("로그인 성공 후 세션 1개 생성")
-    void test2() throws Exception {
-        // given
-        User user = userRepository.findByEmailAndPassword("hodolman88@gmail.com", "1234")
-                .orElseThrow(InvalidSignInInformation::new);
-
-        Login login = Login.builder()
-                .email("hodolman88@gmail.com")
-                .password("1234")
-                .build();
-
-        String json = objectMapper.writeValueAsString(login);// 자바 빈 규약에 따라 JSON 으로 변경합니다.
-
-        // expected
-        mockMvc.perform(post("/auth/login")
-                        .contentType(APPLICATION_JSON)
-                        .content(json))
-                .andExpect(status().isOk())
-                .andDo(print());
-
-        assertEquals(2L, user.getSessions().size());
-    }
-
-    @Test
-    @DisplayName("로그인 성공 후 accessToken 응답")
-    void test3() throws Exception {
-        // given
-        User user = userRepository.findByEmailAndPassword("hodolman88@gmail.com", "1234")
-                .orElseThrow(InvalidSignInInformation::new);
-
-        Login login = Login.builder()
-                .email("hodolman88@gmail.com")
-                .password("1234")
-                .build();
-
-        String json = objectMapper.writeValueAsString(login);// 자바 빈 규약에 따라 JSON 으로 변경합니다.
-
-        // expected
-        mockMvc.perform(post("/auth/login")
-                        .contentType(APPLICATION_JSON)
-                        .content(json))
-                .andExpect(status().isOk())
-                .andExpect(jsonPath("$.accessToken", Matchers.notNullValue()))
-                .andDo(print());
-
-    }
-
-    @Test
-    @DisplayName("로그인 후 권한이 필요한 페이지 접속한다 /foo")
-    void test4() throws Exception {
-        // given
-        User user = User.builder()
+                .email("hodolman88@gamil.com")
                 .name("호돌맨")
-                .email("hodolman88@gmail.com")
-                .password("1234")
                 .build();
 
-        Session session = user.addSession();
-        userRepository.save(user);
-
         // expected
-        mockMvc.perform(get("/foo")
-                        .header("Authorization", session.getAccessToken())
+        mockMvc.perform(post("/auth/signup")
+                        .content(objectMapper.writeValueAsString(signup))
                         .contentType(APPLICATION_JSON))
-                .andExpect(status().isUnauthorized()) // isUnauthorized -> 401 에러
+                .andExpect(status().isOk())
                 .andDo(print());
     }
 
-    @Test
-    @DisplayName("로그인 후 검증되지 않은 세션값으로 권한이 필요한 페이지에 접속할 수 없다.")
-    void test5() throws Exception {
-        // given
-        User user = User.builder()
-                .name("호돌맨")
-                .email("hodolman88@gmail.com")
-                .password("1234")
-                .build();
-
-        Session session = user.addSession();
-        userRepository.save(user);
-
-        // expected
-        mockMvc.perform(get("/foo")
-                        .header("Authorization", session.getAccessToken() + "-o")
-                        .contentType(APPLICATION_JSON))
-                .andExpect(status().isUnauthorized()) // isUnauthorized -> 401 에러 발급 되지 않은 토큰
-                .andDo(print());
-    }
 }

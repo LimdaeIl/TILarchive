@@ -13,5 +13,4 @@ public class HodologApplication {
     public static void main(String[] args) {
         SpringApplication.run(HodologApplication.class, args);
     }
-
 }
