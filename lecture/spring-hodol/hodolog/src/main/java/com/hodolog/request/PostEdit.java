@@ -22,4 +22,5 @@ public class PostEdit {
         this.title = title;
         this.content = content;
     }
+
 }

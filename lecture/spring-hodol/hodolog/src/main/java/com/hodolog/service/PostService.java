@@ -50,18 +50,30 @@ public class PostService {
                 .collect(Collectors.toList());
     }
 
+    // 1. 제목 or 내용만 수정되는 경우에는 클라이언트로부터 수정되지 않은 값을 받아서 유지할 것인지,
+    // 2. 서버에서 유지할 것인지 알아야 합니다.
     @Transactional
     public void edit(Long id, PostEdit postEdit) {
         Post post = postRepository.findById(id)
                 .orElseThrow(PostNotFound::new);
 
-        PostEditor.PostEditorBuilder editorBuilder = post.toEditor();
+        PostEditor.PostEditorBuilder editorBuilder = post.toEditor(); // 빌더 자체를 전달
 
         PostEditor postEditor = editorBuilder.title(postEdit.getTitle())
                 .content(postEdit.getContent())
                 .build();
 
         post.edit(postEditor);
+
+        // 1. 제목 or 내용만 수정되는 경우에는 클라이언트로부터 수정되지 않은 값을 받아서 유지할 것인지,
+        // 2. 서버에서 유지할 것인지 알아야 합니다.
+//        if (postEdit.getTitle() != null) {
+//            editorBuilder.title(postEdit.getTitle());
+//        }
+//        if (postEdit.getContent() != null) {
+//            editorBuilder.content(postEdit.getContent());
+//        }
+//        post.edit(editorBuilder.build();  방법이 있습니다. -> PostEditor 안에서도 검증가능합니다!
 
         // PostEditor 로 작성한 이유는 edit 필드가 많아지면 아래처럼 처리하기 힘듭니다.
         // Post 가 스스로 수정할 수 있는 포인트는 타이틀과 제목 같은 제한 포인트를 두기 위해 PostEditor 를 사용합니다.

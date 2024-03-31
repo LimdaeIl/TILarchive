@@ -1,11 +1,13 @@
 package com.hodolog.domain;
 
+import lombok.Builder;
 import lombok.Getter;
 
 @Getter
 public class PostEditor {
+    // PostEditor 를 통해 수정해야 할 필드를 좁힐 수 있는 큰 장점이 있습니다.
 
-    private final String title;
+    private final String title; // this.title = title != null ? title; 생성자 안에서 널체크 이렇게도 가능해요!
     private final String content;
 
     public PostEditor(String title, String content) {
@@ -13,6 +15,7 @@ public class PostEditor {
         this.content = content;
     }
 
+    // ---------------------------------------------------------------------------------
 
     public static PostEditorBuilder builder() {
         return new PostEditorBuilder();

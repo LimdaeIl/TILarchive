@@ -29,7 +29,7 @@ public class Post {
                 .content(content); // 빌더 클래스 자체를 전달
     }
 
-    public void edit(PostEditor postEditor) {
+    public void edit(PostEditor postEditor) { // 픽스된 포스트 에디터
         title = postEditor.getTitle();
         content = postEditor.getContent();
     }
