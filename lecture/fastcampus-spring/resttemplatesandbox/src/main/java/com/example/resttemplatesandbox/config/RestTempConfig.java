@@ -14,7 +14,7 @@ public class RestTempConfig {
     @Bean
     public RestTemplate restTemplate(RestTemplateBuilder builder) {
         return builder
-                .setConnectTimeout(Duration.of(1, ChronoUnit.SECONDS))
+                .setConnectTimeout(Duration.of(5, ChronoUnit.SECONDS))
                 .setReadTimeout(Duration.of(5, ChronoUnit.SECONDS))
                 .build();
     }
