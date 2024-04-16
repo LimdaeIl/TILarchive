@@ -3,6 +3,7 @@ package com.example.resttemplatesandbox.service;
 import com.example.resttemplatesandbox.controller.MinuteCandleRequest;
 import com.example.resttemplatesandbox.data.MinuteCandle;
 import com.example.resttemplatesandbox.http.HttpClient;
+import com.example.resttemplatesandbox.http.UpbitFeignClient;
 import com.example.resttemplatesandbox.http.UpbitMinuteCandle;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
@@ -22,10 +23,12 @@ public class UpbitService {
 
     private final HttpClient httpClient;
     private final ObjectMapper objectMapper;
+    private final UpbitFeignClient upbitFeignClient;
 
-    UpbitService(HttpClient httpClient) {
+    UpbitService(HttpClient httpClient, UpbitFeignClient upbitFeignClient) {
         this.httpClient = httpClient;
         this.objectMapper = new ObjectMapper();
+        this.upbitFeignClient = upbitFeignClient;
     }
 
     public List<MinuteCandle> getCandles(int unit, MinuteCandleRequest request) throws JsonProcessingException {
@@ -40,12 +43,15 @@ public class UpbitService {
 
         // header
         Map<String, String> headers = new HashMap<>();
-        headers.put("accpet", "application/json");
+        headers.put("accept", "application/json");
         HttpHeaders httpHeaders = new HttpHeaders();
         httpHeaders.setAll(headers);
 
         // call
         String result = httpClient.getData(uri, HttpMethod.GET, httpHeaders);
+
+        // feign
+        String feignResult = upbitFeignClient.getMinuteCandle(unit, request.getMarket(), request.getCount());
 
         List<UpbitMinuteCandle> upbitMinuteCandles = objectMapper.readValue(result, new TypeReference<List<UpbitMinuteCandle>>() {});
 
