@@ -1,0 +1,6 @@
+rootProject.name = 'fastcampus'
+include("fastcampus-api")
+include("fastcampus-batch")
+include("fastcampus-common")
+include("fastcampus-domain")
+include("fastcampus-external")

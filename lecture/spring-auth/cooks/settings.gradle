@@ -1,0 +1,5 @@
+rootProject.name = 'cooks'
+include("multi-module-a")
+include("multi-module-c")
+include("multi-module-d")
+include("multi-module-e")
