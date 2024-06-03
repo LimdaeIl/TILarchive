@@ -3,6 +3,7 @@ package shop.mtcoding.bank.config;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
@@ -26,6 +27,7 @@ public class SecurityConfigTest {
     // 서버는 일관성있게 에러가 리턴되어야 한다.
     // 내가 모르는 에러가 프론트한테 날라가지 않게, 내가 직접 다 제어하자.
     @Test
+    @DisplayName("Security Config: 인증 테스트")
     public void authentication_test() throws Exception {
         // given
 

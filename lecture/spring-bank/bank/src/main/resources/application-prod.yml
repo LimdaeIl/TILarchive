@@ -8,7 +8,7 @@ server:
 spring:
   datasource:
     url: jdbc:mariadb://${rds.hostname}:${rds.port}/${rds.db.name}
-    driver-class-name: com.mysql.cj.jdbc.Driver
+    driver-class-name: org.mariadb.jdbc.Driver
     username: ${rds.username}
     password: ${rds.password}
   jpa:
@@ -20,4 +20,4 @@ spring:
 
 logging:
   level:
-    '[com.bank]': INFO
+    '[shop.mtcoding.bank]': INFO

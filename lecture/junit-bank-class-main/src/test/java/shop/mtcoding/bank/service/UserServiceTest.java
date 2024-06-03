@@ -7,6 +7,7 @@ import static org.mockito.Mockito.when;
 import java.time.LocalDateTime;
 import java.util.Optional;
 
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -36,6 +37,7 @@ public class UserServiceTest extends DummyObject {
     private BCryptPasswordEncoder passwordEncoder;
 
     @Test
+    @DisplayName("UserService: 회원가입 테스트")
     public void 회원가입_test() throws Exception {
         // given
         JoinReqDto joinReqDto = new JoinReqDto();
@@ -61,5 +63,4 @@ public class UserServiceTest extends DummyObject {
         assertThat(joinRespDto.getId()).isEqualTo(1L);
         assertThat(joinRespDto.getUsername()).isEqualTo("ssar");
     }
-
 }

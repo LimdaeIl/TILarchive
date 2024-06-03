@@ -1,0 +1,23 @@
+# key? 32byte (256bit)
+jwt:
+  secretKey: 12345678901234567890123456789012
+  refreshKey: 12345678901234567890123456789012
+
+
+
+
+spring:
+  datasource:
+    url: jdbc:h2:tcp://localhost/~/demo
+    username: sa
+    password: sa
+
+  jpa:
+    hibernate:
+      ddl-auto: create
+    properties:
+      hibernate:
+        show_sql: true
+        format_sql: true
+  security:
+    
