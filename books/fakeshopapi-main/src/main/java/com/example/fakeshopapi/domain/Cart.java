@@ -20,7 +20,7 @@ public class Cart {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private Long memberId;
+    private Long memberId; //memberid
 
     private String date; // yyyymmdd
 
