@@ -1,4 +1,4 @@
-# ☀️TILarchive 🌃
+# ☀️TILarchive 🌃  -> 티스토리에서 정리 https://limdae94.tistory.com/
 
 학습 정리한 내용을 담은 리포지토리입니다. 주로 코드 중심으로 정리하고 있으며, 개인적으로 부족하다고 생각이 들거나 혹은 두고두고 학습해야 할 부분들에 대해 [`🍏벨로그🍏`](https://velog.io/@limdae)에 정리하고 있습니다.
 
